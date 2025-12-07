@@ -1,0 +1,15 @@
+zhs\queue.o: ../Middlewares/Third_Party/FreeRTOS/Source/queue.c
+zhs\queue.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
+zhs\queue.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+zhs\queue.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h
+zhs\queue.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+zhs\queue.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+zhs\queue.o: ../Core/Inc/FreeRTOSConfig.h
+zhs\queue.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h
+zhs\queue.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/portable.h
+zhs\queue.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/deprecated_definitions.h
+zhs\queue.o: ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F/portmacro.h
+zhs\queue.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h
+zhs\queue.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h
+zhs\queue.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h
+zhs\queue.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h
