@@ -22,7 +22,7 @@
 #include "stm32h7xx_it.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "uart.h"
+#include "control_system.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
