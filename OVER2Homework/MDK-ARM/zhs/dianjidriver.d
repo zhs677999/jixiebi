@@ -1,7 +1,7 @@
-zhs\dianjidriver.o: ..\app\Src\dianjiDriver.c
-zhs\dianjidriver.o: ../app/Inc/dianjiDriver.h
-zhs\dianjidriver.o: ../app/Inc/TaskPID.h
-zhs\dianjidriver.o: ../app/Inc/sysconfig.h
+zhs\dianjidriver.o: ..\BSP\Src\dianjiDriver.c
+zhs\dianjidriver.o: ../BSP/Inc/dianjiDriver.h
+zhs\dianjidriver.o: ../BSP/Inc/TaskPID.h
+zhs\dianjidriver.o: ../BSP/Inc/sysconfig.h
 zhs\dianjidriver.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 zhs\dianjidriver.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 zhs\dianjidriver.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

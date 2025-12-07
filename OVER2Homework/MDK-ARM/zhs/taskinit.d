@@ -1,6 +1,6 @@
 zhs\taskinit.o: ..\FTask\Src\TaskInit.c
 zhs\taskinit.o: ../FTask/Inc/TaskInit.h
-zhs\taskinit.o: ../app/Inc/sysconfig.h
+zhs\taskinit.o: ../BSP/Inc/sysconfig.h
 zhs\taskinit.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 zhs\taskinit.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 zhs\taskinit.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
@@ -60,8 +60,8 @@ zhs\taskinit.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h
 zhs\taskinit.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h
 zhs\taskinit.o: ../FTask/Inc/TaskCan.h
 zhs\taskinit.o: ../FTask/Inc/TaskMOTOR.h
-zhs\taskinit.o: ../app/Inc/CAN.h
-zhs\taskinit.o: ../app/Inc/dianjiDriver.h
-zhs\taskinit.o: ../app/Inc/TaskPID.h
-zhs\taskinit.o: ../app/Inc/UART.h
+zhs\taskinit.o: ../BSP/Inc/CAN.h
+zhs\taskinit.o: ../BSP/Inc/dianjiDriver.h
+zhs\taskinit.o: ../BSP/Inc/TaskPID.h
+zhs\taskinit.o: ../BSP/Inc/UART.h
 zhs\taskinit.o: ../FTask/Inc/TaskState.h

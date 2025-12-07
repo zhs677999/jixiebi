@@ -52,7 +52,6 @@ void MotortypeRegisterpid(motor_t *mot,
 }
 	
 motor_t YawB,PitchMid;
-motor_t DJIup;
  
 pid_type YawB_PositionPid;
 pid_type YawB_SpeedPid;
@@ -60,11 +59,8 @@ pid_type YawB_SpeedPid;
 pid_type PitchMid_PositionPid;
 pid_type PitchMid_SpeedPid;
 
-pid_type DJIup_PositionPid;
-pid_type DJIup_SpeedPid;
 
-
-int Motor_Define =0; 
+int Motor_Define =0;
 void MotionMotor_Init(void)
 {
     MotortypeRegisterpid(&YawB, MOTOR_6020,
@@ -75,7 +71,6 @@ void MotionMotor_Init(void)
     // 2) PID
     float yawb_angle_para[3] = { 15.0f, 0.0f, 0.1f };
     float yawb_speed_para[3] = { 100.0f, 0.150f, 10.0f };
-    float up_angle_para[3]   = { 0.0f, 0.0f, 0.0f };
     PID_Parameter_Init(YawB.PositionPID,
                        yawb_angle_para,
     PID_Parameter_Init(PitchMid.PositionPID,
@@ -96,13 +91,7 @@ void MotionMotor_Init(void)
     PitchMid.Targetcirnum = PitchMid.Realcirnum;
     YawB.TargetAngle = 0;
     PitchMid.TargetAngle   = 0;
-    YawB.Targetcirnum = DJIup.Targetcirnum = PitchMid.Targetcirnum = 0;
-    PID_Parameter_Init(DJIup.PositionPID,
-                       PID_POSITION,
-                       up_angle_para,
-                       10000.0f,
-                       500.0f,
-                       0);
+    YawB.Targetcirnum = PitchMid.Targetcirnum = 0;
 
    
     PID_Parameter_Init(LKmid.PositionPID,
@@ -121,12 +110,6 @@ void MotionMotor_Init(void)
                        1000.0f,    
                        0);
 
-    PID_Parameter_Init(DJIup.SpeedPID,
-                       PID_POSITION,
-                       up_speed_para,
-                       5000.0f,    
-                       1000.0f,
-                       0);
 
     // LKmid 速度环 PID
     PID_Parameter_Init(LKmid.SpeedPID,
@@ -138,9 +121,7 @@ void MotionMotor_Init(void)
 
     // 3) 清零 PID 状态
     PID_clear(DJIdown.PositionPID);
-    PID_clear(DJIup.PositionPID);
     PID_clear(DJIdown.SpeedPID);
-    PID_clear(DJIup.SpeedPID);
     PID_clear(LKmid.PositionPID);
     PID_clear(LKmid.SpeedPID);
 
@@ -149,20 +130,15 @@ void MotionMotor_Init(void)
     DJIdown.TargetAngle = DJIdown.InitAngle;
     DJIdown.Targetcirnum = DJIdown.Realcirnum;
 
-    DJIup.InitAngle   = 29.3f;
-    DJIup.TargetAngle = DJIup.InitAngle;
-    DJIup.Targetcirnum = DJIup.Realcirnum;
-
-   // LKmid.InitAngle   = 88.9f;
-	 LKmid.InitAngle=LKmid.RealAngle;
+    // LKmid.InitAngle   = 88.9f;
+         LKmid.InitAngle=LKmid.RealAngle;
     LKmid.TargetAngle = LKmid.InitAngle;
     LKmid.Targetcirnum = LKmid.Realcirnum;
 
     /*
     DJIdown.TargetAngle = 0;
-    DJIup.TargetAngle   = 0;
     LKmid.TargetAngle   = 0;
-    DJIdown.Targetcirnum = DJIup.Targetcirnum = LKmid.Targetcirnum = 0;
+    DJIdown.Targetcirnum = LKmid.Targetcirnum = 0;
     */
 
     Motor_Define = 1;

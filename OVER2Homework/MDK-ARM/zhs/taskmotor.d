@@ -1,9 +1,9 @@
 zhs\taskmotor.o: ..\FTask\Src\TaskMOTOR.c
 zhs\taskmotor.o: ../FTask/Inc/TaskMOTOR.h
-zhs\taskmotor.o: ../app/Inc/CAN.h
-zhs\taskmotor.o: ../app/Inc/dianjiDriver.h
-zhs\taskmotor.o: ../app/Inc/TaskPID.h
-zhs\taskmotor.o: ../app/Inc/sysconfig.h
+zhs\taskmotor.o: ../BSP/Inc/CAN.h
+zhs\taskmotor.o: ../BSP/Inc/dianjiDriver.h
+zhs\taskmotor.o: ../BSP/Inc/TaskPID.h
+zhs\taskmotor.o: ../BSP/Inc/sysconfig.h
 zhs\taskmotor.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 zhs\taskmotor.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 zhs\taskmotor.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
@@ -61,4 +61,4 @@ zhs\taskmotor.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h
 zhs\taskmotor.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h
 zhs\taskmotor.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h
 zhs\taskmotor.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h
-zhs\taskmotor.o: ../app/Inc/UART.h
+zhs\taskmotor.o: ../BSP/Inc/UART.h

@@ -413,14 +413,5 @@ void Manual_Test(void)
         Add_LKmid_Target(-step);
     }
 
-    // 右摇杆左/右 → 控制 DJIup（比如 yaw）
-    if (StickR_Hori[0] == Stick_Big_Left && StickR_Hori[1] == Stick_Big_Left)
-    {
-        Add_DJIup_Target(-step);
-    }
-    if (StickR_Hori[0] == Stick_Big_Right && StickR_Hori[1] == Stick_Big_Right)
-    {
-        Add_DJIup_Target(step);
-    }
 }
 

@@ -116,7 +116,6 @@ void DJI_AngleSpeedCurrent_Loop(motor_t *mot,uint8_t motor_id,uint8_t canx);
 void DJI_GM6020_CurrentControl(int16_t cmd, uint8_t motor_id, uint8_t canx);
 void LKmid_AngleSpeedCurrent_Loop(motor_t *mot);
 void DJIdown_AngleSpeedCurrent_Loop(motor_t *mot);
-void DJIup_AngleSpeedCurrent_Loop(motor_t *mot);
 void MotortypeRegisterpid(motor_t *mot,
                        motor_type type,
                        pid_type *pospid,

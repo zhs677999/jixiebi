@@ -3515,7 +3515,7 @@
       <Size>100</Size>
       <ActiveTab>6</ActiveTab>
       <Doc>
-        <Name>..\app\Src\task_pid.c</Name>
+        <Name>..\BSP\Src\task_pid.c</Name>
         <ColumnNumber>18</ColumnNumber>
         <TopLine>34</TopLine>
         <CurrentLine>50</CurrentLine>
@@ -3524,7 +3524,7 @@
         <PaneID>0</PaneID>
       </Doc>
       <Doc>
-        <Name>..\app\Inc\task_pid.h</Name>
+        <Name>..\BSP\Inc\task_pid.h</Name>
         <ColumnNumber>13</ColumnNumber>
         <TopLine>3</TopLine>
         <CurrentLine>50</CurrentLine>
@@ -3569,7 +3569,7 @@
         <PaneID>0</PaneID>
       </Doc>
       <Doc>
-        <Name>..\app\Src\dianji_driver.c</Name>
+        <Name>..\BSP\Src\dianji_driver.c</Name>
         <ColumnNumber>34</ColumnNumber>
         <TopLine>76</TopLine>
         <CurrentLine>86</CurrentLine>
@@ -3578,7 +3578,7 @@
         <PaneID>0</PaneID>
       </Doc>
       <Doc>
-        <Name>..\app\Src\zhuce.c</Name>
+        <Name>..\BSP\Src\zhuce.c</Name>
         <ColumnNumber>0</ColumnNumber>
         <TopLine>1</TopLine>
         <CurrentLine>1</CurrentLine>
@@ -3587,7 +3587,7 @@
         <PaneID>0</PaneID>
       </Doc>
       <Doc>
-        <Name>..\app\Src\sysconfig.c</Name>
+        <Name>..\BSP\Src\sysconfig.c</Name>
         <ColumnNumber>0</ColumnNumber>
         <TopLine>1</TopLine>
         <CurrentLine>1</CurrentLine>
@@ -3596,7 +3596,7 @@
         <PaneID>0</PaneID>
       </Doc>
       <Doc>
-        <Name>..\app\Inc\grav_comp.h</Name>
+        <Name>..\BSP\Inc\grav_comp.h</Name>
         <ColumnNumber>0</ColumnNumber>
         <TopLine>1</TopLine>
         <CurrentLine>1</CurrentLine>
@@ -3605,7 +3605,7 @@
         <PaneID>0</PaneID>
       </Doc>
       <Doc>
-        <Name>..\app\Inc\sysconfig.h</Name>
+        <Name>..\BSP\Inc\sysconfig.h</Name>
         <ColumnNumber>0</ColumnNumber>
         <TopLine>41</TopLine>
         <CurrentLine>77</CurrentLine>
@@ -3614,7 +3614,7 @@
         <PaneID>0</PaneID>
       </Doc>
       <Doc>
-        <Name>..\app\Src\grav_comp.c</Name>
+        <Name>..\BSP\Src\grav_comp.c</Name>
         <ColumnNumber>0</ColumnNumber>
         <TopLine>1</TopLine>
         <CurrentLine>1</CurrentLine>
@@ -3623,7 +3623,7 @@
         <PaneID>0</PaneID>
       </Doc>
       <Doc>
-        <Name>..\app\Src\CAN.c</Name>
+        <Name>..\BSP\Src\CAN.c</Name>
         <ColumnNumber>0</ColumnNumber>
         <TopLine>214</TopLine>
         <CurrentLine>218</CurrentLine>
@@ -3632,7 +3632,7 @@
         <PaneID>0</PaneID>
       </Doc>
       <Doc>
-        <Name>..\app\Src\UART.c</Name>
+        <Name>..\BSP\Src\UART.c</Name>
         <ColumnNumber>1</ColumnNumber>
         <TopLine>244</TopLine>
         <CurrentLine>256</CurrentLine>
@@ -3659,7 +3659,7 @@
         <PaneID>0</PaneID>
       </Doc>
       <Doc>
-        <Name>..\app\Inc\can.h</Name>
+        <Name>..\BSP\Inc\can.h</Name>
         <ColumnNumber>7</ColumnNumber>
         <TopLine>1</TopLine>
         <CurrentLine>1</CurrentLine>
@@ -3668,7 +3668,7 @@
         <PaneID>0</PaneID>
       </Doc>
       <Doc>
-        <Name>..\app\Inc\zhuce.h</Name>
+        <Name>..\BSP\Inc\zhuce.h</Name>
         <ColumnNumber>0</ColumnNumber>
         <TopLine>1</TopLine>
         <CurrentLine>8</CurrentLine>
@@ -3695,7 +3695,7 @@
         <PaneID>0</PaneID>
       </Doc>
       <Doc>
-        <Name>..\app\Inc\uart.h</Name>
+        <Name>..\BSP\Inc\uart.h</Name>
         <ColumnNumber>44</ColumnNumber>
         <TopLine>113</TopLine>
         <CurrentLine>145</CurrentLine>
@@ -3704,7 +3704,7 @@
         <PaneID>0</PaneID>
       </Doc>
       <Doc>
-        <Name>..\app\Inc\zaxiang.h</Name>
+        <Name>..\BSP\Inc\zaxiang.h</Name>
         <ColumnNumber>0</ColumnNumber>
         <TopLine>1</TopLine>
         <CurrentLine>16</CurrentLine>

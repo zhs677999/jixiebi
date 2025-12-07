@@ -249,18 +249,9 @@ void Can1Received_infoHandle(uint32_t stdid, uint8_t adata[])
 void Can2Received_infoHandle(uint32_t stdid, uint8_t adata[])
 {
   //uint32_t id = stdid & 0x7FF;
-	//id=id-0x204;
+        //id=id-0x204;
   switch (stdid)
   {
-  case (DJI_up_id+0x204)    :
-		DJIMotor_ParaHandle(&DJIup, adata);
-    /*RS_Motor_ParaHandle(&PitchM_Motor, stdid, adata);*/
-    break;
-/*
-  case PitchB_Motor_id:
-    RS_Motor_ParaHandle(&PitchB_Motor, stdid, adata);
-    break;
-*/
   default:
     break;
   }

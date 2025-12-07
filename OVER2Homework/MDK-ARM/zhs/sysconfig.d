@@ -1,5 +1,5 @@
-zhs\sysconfig.o: ..\app\Src\sysconfig.c
-zhs\sysconfig.o: ../app/Inc/sysconfig.h
+zhs\sysconfig.o: ..\BSP\Src\sysconfig.c
+zhs\sysconfig.o: ../BSP/Inc/sysconfig.h
 zhs\sysconfig.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 zhs\sysconfig.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 zhs\sysconfig.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

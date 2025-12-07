@@ -1353,7 +1353,6 @@ Section Cross References
     can.o(i.Can1Received_infoHandle) refers to can.o(i.LK_Motor_ParaHandle) for LK_Motor_ParaHandle
     can.o(i.Can1Received_infoHandle) refers to dianjidriver.o(.bss) for DJIdown
     can.o(i.Can2Received_infoHandle) refers to can.o(i.DJIMotor_ParaHandle) for DJIMotor_ParaHandle
-    can.o(i.Can2Received_infoHandle) refers to dianjidriver.o(.bss) for DJIup
     can.o(i.DJIMotor_ParaHandle) refers to can.o(i.DJIMotor_AngleHandle) for DJIMotor_AngleHandle
     can.o(i.HAL_FDCAN_RxFifo0Callback) refers to stm32h7xx_hal_fdcan.o(i.HAL_FDCAN_GetRxMessage) for HAL_FDCAN_GetRxMessage
     can.o(i.HAL_FDCAN_RxFifo0Callback) refers to can.o(i.Can1Received_infoHandle) for Can1Received_infoHandle
@@ -1391,8 +1390,6 @@ Section Cross References
     dianjidriver.o(i.DJI_GM6020_CurrentControl) refers to taskinit.o(.data) for Queue_CANSend
     dianjidriver.o(i.DJIdown_AngleSpeedCurrent_Loop) refers to taskpid.o(i.Pid_cal) for Pid_cal
     dianjidriver.o(i.DJIdown_AngleSpeedCurrent_Loop) refers to dianjidriver.o(i.DJI_GM6020_CurrentControl) for DJI_GM6020_CurrentControl
-    dianjidriver.o(i.DJIup_AngleSpeedCurrent_Loop) refers to taskpid.o(i.Pid_cal) for Pid_cal
-    dianjidriver.o(i.DJIup_AngleSpeedCurrent_Loop) refers to dianjidriver.o(i.DJI_GM6020_CurrentControl) for DJI_GM6020_CurrentControl
     dianjidriver.o(i.LK_MultiLoop_angleControl) refers to queue.o(i.xQueueGenericSend) for xQueueGenericSend
     dianjidriver.o(i.LK_MultiLoop_angleControl) refers to dianjidriver.o(.bss) for CANSend
     dianjidriver.o(i.LK_MultiLoop_angleControl) refers to taskinit.o(.data) for Queue_CANSend
@@ -1445,7 +1442,6 @@ Section Cross References
     taskmotor.o(i.Motor_Control) refers to dianjidriver.o(i.DJIdown_AngleSpeedCurrent_Loop) for DJIdown_AngleSpeedCurrent_Loop
     taskmotor.o(i.Motor_Control) refers to dianjidriver.o(i.LKmid_AngleSpeedCurrent_Loop) for LKmid_AngleSpeedCurrent_Loop
     taskmotor.o(i.Motor_Control) refers to dianjidriver.o(i.LK_MultiLoop_angleRead) for LK_MultiLoop_angleRead
-    taskmotor.o(i.Motor_Control) refers to dianjidriver.o(i.DJIup_AngleSpeedCurrent_Loop) for DJIup_AngleSpeedCurrent_Loop
     taskmotor.o(i.Motor_Control) refers to taskmotor.o(.data) for CAN1_TurnCount
     taskmotor.o(i.Motor_Control) refers to dianjidriver.o(.bss) for DJIdown
     taskmotor.o(i.Motor_Protect) refers to dianjidriver.o(.data) for Motor_Define
@@ -1465,8 +1461,6 @@ Section Cross References
     taskmotor.o(i.Task_MotorControl) refers to dianjidriver.o(.data) for Motor_Define
     taskstate.o(i.Add_DJIdown_Target) refers to uart.o(i.Motor_Add_TargetAngle) for Motor_Add_TargetAngle
     taskstate.o(i.Add_DJIdown_Target) refers to dianjidriver.o(.bss) for DJIdown
-    taskstate.o(i.Add_DJIup_Target) refers to uart.o(i.Motor_Add_TargetAngle) for Motor_Add_TargetAngle
-    taskstate.o(i.Add_DJIup_Target) refers to dianjidriver.o(.bss) for DJIup
     taskstate.o(i.Add_LKmid_Target) refers to uart.o(i.Motor_Add_TargetAngle) for Motor_Add_TargetAngle
     taskstate.o(i.Add_LKmid_Target) refers to dianjidriver.o(.bss) for LKmid
     taskstate.o(i.CleanSwTrigger) refers to uart.o(.bss) for Remote_controler
@@ -1475,7 +1469,6 @@ Section Cross References
     taskstate.o(i.MainState_Update) refers to taskstate.o(.data) for MainState
     taskstate.o(i.Manual_Test) refers to taskstate.o(i.Add_DJIdown_Target) for Add_DJIdown_Target
     taskstate.o(i.Manual_Test) refers to taskstate.o(i.Add_LKmid_Target) for Add_LKmid_Target
-    taskstate.o(i.Manual_Test) refers to taskstate.o(i.Add_DJIup_Target) for Add_DJIup_Target
     taskstate.o(i.Manual_Test) refers to taskstate.o(.data) for StickL_Vert
     taskstate.o(i.StateMachine_Init) refers to taskstate.o(.data) for MainState
     taskstate.o(i.StateMachine_Update) refers to taskstate.o(i.MainState_Update) for MainState_Update
@@ -2701,19 +2694,19 @@ Image Symbol Table
     ..\\FTask\\Src\\TaskInit.c               0x00000000   Number         0  taskinit.o ABSOLUTE
     ..\\FTask\\Src\\TaskMOTOR.c              0x00000000   Number         0  taskmotor.o ABSOLUTE
     ..\\FTask\\Src\\TaskState.c              0x00000000   Number         0  taskstate.o ABSOLUTE
-    ..\\app\\Src\\CAN.c                      0x00000000   Number         0  can.o ABSOLUTE
-    ..\\app\\Src\\TaskPID.c                  0x00000000   Number         0  taskpid.o ABSOLUTE
-    ..\\app\\Src\\UART.c                     0x00000000   Number         0  uart.o ABSOLUTE
-    ..\\app\\Src\\dianjiDriver.c             0x00000000   Number         0  dianjidriver.o ABSOLUTE
-    ..\\app\\Src\\sysconfig.c                0x00000000   Number         0  sysconfig.o ABSOLUTE
-    ..\app\Src\CAN.c                         0x00000000   Number         0  can.o ABSOLUTE
-    ..\app\Src\TaskPID.c                     0x00000000   Number         0  taskpid.o ABSOLUTE
-    ..\app\Src\UART.c                        0x00000000   Number         0  uart.o ABSOLUTE
-    ..\app\Src\dianjiDriver.c                0x00000000   Number         0  dianjidriver.o ABSOLUTE
-    ..\app\Src\gravComp.c                    0x00000000   Number         0  gravcomp.o ABSOLUTE
-    ..\app\Src\sysconfig.c                   0x00000000   Number         0  sysconfig.o ABSOLUTE
-    ..\app\Src\zaxiang.c                     0x00000000   Number         0  zaxiang.o ABSOLUTE
-    ..\app\Src\zhuce.c                       0x00000000   Number         0  zhuce.o ABSOLUTE
+    ..\\BSP\\Src\\CAN.c                      0x00000000   Number         0  can.o ABSOLUTE
+    ..\\BSP\\Src\\TaskPID.c                  0x00000000   Number         0  taskpid.o ABSOLUTE
+    ..\\BSP\\Src\\UART.c                     0x00000000   Number         0  uart.o ABSOLUTE
+    ..\\BSP\\Src\\dianjiDriver.c             0x00000000   Number         0  dianjidriver.o ABSOLUTE
+    ..\\BSP\\Src\\sysconfig.c                0x00000000   Number         0  sysconfig.o ABSOLUTE
+    ..\BSP\Src\CAN.c                         0x00000000   Number         0  can.o ABSOLUTE
+    ..\BSP\Src\TaskPID.c                     0x00000000   Number         0  taskpid.o ABSOLUTE
+    ..\BSP\Src\UART.c                        0x00000000   Number         0  uart.o ABSOLUTE
+    ..\BSP\Src\dianjiDriver.c                0x00000000   Number         0  dianjidriver.o ABSOLUTE
+    ..\BSP\Src\gravComp.c                    0x00000000   Number         0  gravcomp.o ABSOLUTE
+    ..\BSP\Src\sysconfig.c                   0x00000000   Number         0  sysconfig.o ABSOLUTE
+    ..\BSP\Src\zaxiang.c                     0x00000000   Number         0  zaxiang.o ABSOLUTE
+    ..\BSP\Src\zhuce.c                       0x00000000   Number         0  zhuce.o ABSOLUTE
     dc.s                                     0x00000000   Number         0  dc.o ABSOLUTE
     startup_stm32h723xx.s                    0x00000000   Number         0  startup_stm32h723xx.o ABSOLUTE
     RESET                                    0x08000000   Section      716  startup_stm32h723xx.o(RESET)
@@ -2779,8 +2772,6 @@ Image Symbol Table
     .text                                    0x08000736   Section        0  indicate_semi.o(.text)
     i.Add_DJIdown_Target                     0x08000738   Section        0  taskstate.o(i.Add_DJIdown_Target)
     Add_DJIdown_Target                       0x08000739   Thumb Code    26  taskstate.o(i.Add_DJIdown_Target)
-    i.Add_DJIup_Target                       0x08000758   Section        0  taskstate.o(i.Add_DJIup_Target)
-    Add_DJIup_Target                         0x08000759   Thumb Code    26  taskstate.o(i.Add_DJIup_Target)
     i.Add_LKmid_Target                       0x08000778   Section        0  taskstate.o(i.Add_LKmid_Target)
     Add_LKmid_Target                         0x08000779   Thumb Code    26  taskstate.o(i.Add_LKmid_Target)
     i.Angle_Limit                            0x08000798   Section        0  uart.o(i.Angle_Limit)
@@ -2796,7 +2787,6 @@ Image Symbol Table
     i.DJIMotor_ParaHandle                    0x08000a74   Section        0  can.o(i.DJIMotor_ParaHandle)
     i.DJI_GM6020_CurrentControl              0x08000ad8   Section        0  dianjidriver.o(i.DJI_GM6020_CurrentControl)
     i.DJIdown_AngleSpeedCurrent_Loop         0x08000b68   Section        0  dianjidriver.o(i.DJIdown_AngleSpeedCurrent_Loop)
-    i.DJIup_AngleSpeedCurrent_Loop           0x08000c3c   Section        0  dianjidriver.o(i.DJIup_AngleSpeedCurrent_Loop)
     i.DMA1_Stream2_IRQHandler                0x08000d10   Section        0  stm32h7xx_it.o(i.DMA1_Stream2_IRQHandler)
     i.DMA_CalcBaseAndBitshift                0x08000d20   Section        0  stm32h7xx_hal_dma.o(i.DMA_CalcBaseAndBitshift)
     DMA_CalcBaseAndBitshift                  0x08000d21   Thumb Code   224  stm32h7xx_hal_dma.o(i.DMA_CalcBaseAndBitshift)
@@ -3388,7 +3378,6 @@ Image Symbol Table
     DJIMotor_ParaHandle                      0x08000a75   Thumb Code    98  can.o(i.DJIMotor_ParaHandle)
     DJI_GM6020_CurrentControl                0x08000ad9   Thumb Code   134  dianjidriver.o(i.DJI_GM6020_CurrentControl)
     DJIdown_AngleSpeedCurrent_Loop           0x08000b69   Thumb Code   200  dianjidriver.o(i.DJIdown_AngleSpeedCurrent_Loop)
-    DJIup_AngleSpeedCurrent_Loop             0x08000c3d   Thumb Code   200  dianjidriver.o(i.DJIup_AngleSpeedCurrent_Loop)
     DMA1_Stream2_IRQHandler                  0x08000d11   Thumb Code    10  stm32h7xx_it.o(i.DMA1_Stream2_IRQHandler)
     DebugMon_Handler                         0x08001105   Thumb Code     2  stm32h7xx_it.o(i.DebugMon_Handler)
     Error_Handler                            0x08001107   Thumb Code     6  main.o(i.Error_Handler)
@@ -3652,13 +3641,10 @@ Image Symbol Table
     UartReceive_Data                         0x240043a0   Data          18  uart.o(.bss)
     DJIdown                                  0x240043b4   Data          76  dianjidriver.o(.bss)
     LKmid                                    0x24004400   Data          76  dianjidriver.o(.bss)
-    DJIup                                    0x2400444c   Data          76  dianjidriver.o(.bss)
     DJIdown_PositionPid                      0x24004498   Data          84  dianjidriver.o(.bss)
     DJIdown_SpeedPid                         0x240044ec   Data          84  dianjidriver.o(.bss)
     LKmid_PositionPid                        0x24004540   Data          84  dianjidriver.o(.bss)
     LKmid_SpeedPid                           0x24004594   Data          84  dianjidriver.o(.bss)
-    DJIup_PositionPid                        0x240045e8   Data          84  dianjidriver.o(.bss)
-    DJIup_SpeedPid                           0x2400463c   Data          84  dianjidriver.o(.bss)
     CAN_Tx_Msg                               0x240046e0   Data          16  taskcan.o(.bss)
     debug_info                               0x240046f0   Data          24  taskcan.o(.bss)
     __libspace_start                         0x24004718   Data          96  libspace.o(.bss)
@@ -3742,7 +3728,6 @@ Memory Map of the image
     0x08000736   0x08000736   0x00000000   Code   RO         7616    .text               c_w.l(indicate_semi.o)
     0x08000736   0x08000736   0x00000002   PAD
     0x08000738   0x08000738   0x00000020   Code   RO         7365    i.Add_DJIdown_Target  taskstate.o
-    0x08000758   0x08000758   0x00000020   Code   RO         7366    i.Add_DJIup_Target  taskstate.o
     0x08000778   0x08000778   0x00000020   Code   RO         7367    i.Add_LKmid_Target  taskstate.o
     0x08000798   0x08000798   0x00000058   Code   RO         6773    i.Angle_Limit       uart.o
     0x080007f0   0x080007f0   0x0000005c   Code   RO         6774    i.BSP_Init_RemoteControl  uart.o
@@ -3758,7 +3743,6 @@ Memory Map of the image
     0x08000ad6   0x08000ad6   0x00000002   PAD
     0x08000ad8   0x08000ad8   0x00000090   Code   RO         6869    i.DJI_GM6020_CurrentControl  dianjidriver.o
     0x08000b68   0x08000b68   0x000000d4   Code   RO         6870    i.DJIdown_AngleSpeedCurrent_Loop  dianjidriver.o
-    0x08000c3c   0x08000c3c   0x000000d4   Code   RO         6871    i.DJIup_AngleSpeedCurrent_Loop  dianjidriver.o
     0x08000d10   0x08000d10   0x00000010   Code   RO          419    i.DMA1_Stream2_IRQHandler  stm32h7xx_it.o
     0x08000d20   0x08000d20   0x000000ec   Code   RO         3126    i.DMA_CalcBaseAndBitshift  stm32h7xx_hal_dma.o
     0x08000e0c   0x08000e0c   0x000000c4   Code   RO         3127    i.DMA_CalcDMAMUXChannelBaseAndMask  stm32h7xx_hal_dma.o

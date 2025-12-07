@@ -11,7 +11,6 @@ uint8_t RCBuffer[2][RC_FRAME_LEN + RC_FRAME_LEN_BACK];
 uint8_t UartReceive_Data[UartCommLen];
 
  extern motor_t YawB,PitchMid;
- extern motor_t DJIup;
 
 /*Roller_State_t Roller_State[3] = {Roller_Mid, Roller_Mid, Roller_Mid}; // 拨轮方向
 Stick_Vert_t StickL_Vert[3] = {Stick_Mid_V, Stick_Mid_V, Stick_Mid_V}; // 左摇杆竖直方向
@@ -292,27 +291,20 @@ void Motor_Update_Target_FromCycle(motor_t *m, float angle_cycle)
     // 2. 上一次的“总目标角度（含多圈）”
     float prev_total = m->TargetAngle + m->Targetcirnum * 360.0f;
 
-        DJIup.Targetcirnum   = DJIup.Realcirnum;
-        return;
-    }
-
     // 2. 读取归一化的摇杆值（Get_Channel_Value 返回约 -1.0 ~ +1.0）
     //float ch_down = Get_Channel_Value(CH_LeftVert);   // 左摇杆上下 -> DJIdown
 		ch_down = Get_Channel_Value(CH_LeftVert); 
     float ch_mid  = Get_Channel_Value(CH_LeftHori);   // 左摇杆左右 -> LKmid
-    float ch_up   = Get_Channel_Value(CH_RightVert);  // 右摇杆上下 -> DJIup
 
     // 3. 映射到 0 ~ 360° 之间
     //    -1 对应 0°，0 对应 180°，+1 对应 360°
     float down_cycle = (ch_down + 1.0f) * 180.0f;   // 0 ~ 360
     float mid_cycle  = (ch_mid  + 1.0f) * 180.0f;   // 0 ~ 360
-    float up_cycle   = (ch_up   + 1.0f) * 180.0f;   // 0 ~ 360
 
-    // 4. 更新三个电机的 TargetAngle / Targetcirnum（处理多圈）
+    // 4. 更新两个电机的 TargetAngle / Targetcirnum（处理多圈）
     Motor_Update_Target_FromCycle(&DJIdown, down_cycle);
-		update_angle_succeed_getfunc++;
+                update_angle_succeed_getfunc++;
     Motor_Update_Target_FromCycle(&LKmid,   mid_cycle);
-    Motor_Update_Target_FromCycle(&DJIup,   up_cycle);
-	
+
 }
 */
