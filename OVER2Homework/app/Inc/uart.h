@@ -1,17 +1,17 @@
 #ifndef _UART__H__
 #define _UART__H__
 
-#include "dianjiDriver.h"
-// #include "sysconfig.h"  µç»ú.hÖĞÓĞ
+#include "dianji_driver.h"
+/*  dianji_driver.h
 
-//ÏÂÃæÊÇRCÏà¹Ø¶¨Òå
+//ä¸‹é¢æ˜¯RCç›¸å…³å®šä¹‰
 
 #define RC_HUART huart5
 
-#define RC_CH_MAX_RELATIVE 660.0f				//Ò£¿ØÆ÷Í¨µÀÏà¶Ô×î´óÖµ
+#define RC_CH_MAX_RELATIVE 660.0f				//é¥æ§å™¨é€šé“ç›¸å¯¹æœ€å¤§å€¼
 
-#define RC_FRAME_LEN        18U         //Ò£¿ØÆ÷Êı¾İÖ¡³¤
-#define RC_FRAME_LEN_BACK   2U          //Ôö¼ÓÁ½¸ö×Ö½Ú±£³ÖÎÈ¶¨
+#define RC_FRAME_LEN        18U         //é¥æ§å™¨æ•°æ®å¸§é•¿
+#define RC_FRAME_LEN_BACK   2U          //å¢åŠ ä¸¤ä¸ªå­—èŠ‚ä¿æŒç¨³å®š
 
 /* ----------------------- RC Channel Definition---------------------------- */
 #define RC_CH_VALUE_MIN ((uint16_t)364 )
@@ -31,7 +31,7 @@
 
 /* ------------------------------- Enum types ------------------------------- */
 
-/*  ÔÚdianjiDriver.h¶¨Òå
+/*  åœ¨dianjiDriver.hå®šä¹‰
 typedef enum 
 {
     CH_RightHori,   //right horizon;	channel0
@@ -50,7 +50,7 @@ typedef enum
 
 typedef enum
 {
-    sw_offset, //Î´¸³Öµ
+    sw_offset, //æœªèµ‹å€¼
     sw_up = 1,
     sw_down,
     sw_mid
@@ -84,17 +84,17 @@ typedef struct
 
 typedef __packed struct
 {
-    uint8_t buffer_index;  // µ±Ç°Ê¹ÓÃµÄ»º´æÇø
-    uint8_t offline_check; // ÀëÏß¼ÆÊı£¬ÓÃÓÚÅĞ¶ÏÒ£¿ØÊÇ·ñÀëÏß
+    uint8_t buffer_index;  // å½“å‰ä½¿ç”¨çš„ç¼“å­˜åŒº
+    uint8_t offline_check; // ç¦»çº¿è®¡æ•°ï¼Œç”¨äºåˆ¤æ–­é¥æ§æ˜¯å¦ç¦»çº¿
 
-    int32_t framecounter; // ÓÃÓÚ¼ÆÊı°üÊı
+    int32_t framecounter; // ç”¨äºè®¡æ•°åŒ…æ•°
 
-    uint8_t swtrigger[2];       // ²¦Âë¿ª¹ØÇĞ»»×´Ì¬
-    uint8_t mousetrigger[2];    // Êó±êÇĞ»»×´Ì¬
-    uint16_t mousePresstime[2]; // Êó±ê°´ÏÂÊ±¼ä
+    uint8_t swtrigger[2];       // æ‹¨ç å¼€å…³åˆ‡æ¢çŠ¶æ€
+    uint8_t mousetrigger[2];    // é¼ æ ‡åˆ‡æ¢çŠ¶æ€
+    uint16_t mousePresstime[2]; // é¼ æ ‡æŒ‰ä¸‹æ—¶é—´
 
-    uint16_t keyPresstime[16]; // ¼üÅÌ°´¼ü°´ÏÂÊ±¼ä
-    uint16_t keytrigger;       // ¼üÅÌ°´¼üÇĞ»»×´Ì¬
+    uint16_t keyPresstime[16]; // é”®ç›˜æŒ‰é”®æŒ‰ä¸‹æ—¶é—´
+    uint16_t keytrigger;       // é”®ç›˜æŒ‰é”®åˆ‡æ¢çŠ¶æ€
     __packed struct
     {
         __packed struct

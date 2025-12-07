@@ -1,4 +1,4 @@
-#include "UART.h"
+#include "uart.h"
 
 
 int update_angle_succeed=0;
@@ -218,7 +218,7 @@ void BSP_Init_RemoteControl(void)
     Remote_controler.offline_check = 0;          /*离线计数*/
     Remote_controler.buffer_index = MEMORYRESET; /*串口缓存区默认值*/
     SET_BIT(RC_HUART.Instance->CR3, USART_CR3_DMAR);
-    HAL_DMAEx_MultiBufferStart(RC_HUART.hdmarx, (uint32_t)&(RC_HUART.Instance->RDR), (uint32_t)&RCBuffer[0][0], (uint32_t)&RCBuffer[1][0], (RC_FRAME_LEN + RC_FRAME_LEN_BACK));
+    HAL_DMAEx_MultiBufferStart(RC_Huart.hdmarx, (uint32_t)&(RC_HUART.Instance->RDR), (uint32_t)&RCBuffer[0][0], (uint32_t)&RCBuffer[1][0], (RC_FRAME_LEN + RC_FRAME_LEN_BACK));
     __HAL_UART_ENABLE_IT(&RC_HUART, UART_IT_IDLE);
 	
 }

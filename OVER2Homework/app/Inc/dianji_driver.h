@@ -2,7 +2,7 @@
 #define __DRIVER_
 
 // #include "sysconfig.h"
-#include "TaskPID.h"
+#include "task_pid.h"
 
 //下面是整体电机（对应Motor.h）
 
@@ -124,6 +124,6 @@ void MotortypeRegisterpid(motor_t *mot,
                        uint8_t Reductionratio,
                        uint32_t Can_id);
 
-// void LK_Motor_ParaHandle(motor_t *mot, uint32_t stdid, uint8_t adata[]); CAN.c中定义了
+// void LK_Motor_ParaHandle(motor_t *mot, uint32_t stdid, uint8_t adata[]); can.c中定义了
 
 #endif

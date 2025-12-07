@@ -1,10 +1,10 @@
 #ifndef __TASKMOTOR_
 #define __TASKMOTOR_
 
-#include "CAN.h"
-#include "UART.h"
+#include "can.h"
+#include "uart.h"
 #include "sysconfig.h"
-//#include "dianjiDriver.h"
+//#include "dianji_driver.h"
 /*
 typedef enum 
 {

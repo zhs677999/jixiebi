@@ -1,4 +1,4 @@
-#include "TaskMOTOR.h"
+#include "task_motor.h"
 
 
 #define TASK_MOTORCONTROL_INTERVAL (1)
@@ -24,7 +24,7 @@ void Task_MotorControl(void *parameters)
 {
     TickType_t xLastWakeUpTime = xTaskGetTickCount();
 
-    MotionMotor_Init();   // PID、电机参数初始化，自己写的，定义在dianjiDriver
+    MotionMotor_Init();   // PID、电机参数初始化，自己写的，定义在dianji_driver
 
 	xLastWakeUpTime = xTaskGetTickCount();
 	// HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1); 大作业用不到
