@@ -1,1 +1,1 @@
-zhs\zaxiang.o: ..\app\Src\zaxiang.c
+zhs\zaxiang.o: ..\BSP\Src\zaxiang.c

@@ -1,8 +1,8 @@
-zhs\uart.o: ..\app\Src\UART.c
-zhs\uart.o: ../app/Inc/UART.h
-zhs\uart.o: ../app/Inc/dianjiDriver.h
-zhs\uart.o: ../app/Inc/TaskPID.h
-zhs\uart.o: ../app/Inc/sysconfig.h
+zhs\uart.o: ..\BSP\Src\UART.c
+zhs\uart.o: ../BSP/Inc/UART.h
+zhs\uart.o: ../BSP/Inc/dianjiDriver.h
+zhs\uart.o: ../BSP/Inc/TaskPID.h
+zhs\uart.o: ../BSP/Inc/sysconfig.h
 zhs\uart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 zhs\uart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 zhs\uart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

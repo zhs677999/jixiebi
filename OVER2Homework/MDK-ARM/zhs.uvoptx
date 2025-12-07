@@ -191,17 +191,12 @@
           <SizeOfObject>0</SizeOfObject>
           <BreakByAccess>0</BreakByAccess>
           <BreakIfRCount>0</BreakIfRCount>
-          <Filename>..\app\Src\CAN.c</Filename>
+          <Filename>..\BSP\Src\CAN.c</Filename>
           <ExecCommand></ExecCommand>
           <Expression></Expression>
         </Bp>
       </Breakpoint>
       <WatchWindow1>
-        <Ww>
-          <count>0</count>
-          <WinNumber>1</WinNumber>
-          <ItemText>DJIup,0x0A</ItemText>
-        </Ww>
         <Ww>
           <count>1</count>
           <WinNumber>1</WinNumber>
@@ -230,12 +225,12 @@
         <Ww>
           <count>6</count>
           <WinNumber>1</WinNumber>
-          <ItemText>\\zhs\../app/Src/dianji_driver.c\DJIdown,0x0A</ItemText>
+          <ItemText>\\zhs\../BSP/Src/dianji_driver.c\DJIdown,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>7</count>
           <WinNumber>1</WinNumber>
-          <ItemText>\\zhs\../app/Src/UART.c\Remote_controler</ItemText>
+          <ItemText>\\zhs\../BSP/Src/UART.c\Remote_controler</ItemText>
         </Ww>
         <Ww>
           <count>8</count>
@@ -265,7 +260,7 @@
         <Ww>
           <count>13</count>
           <WinNumber>1</WinNumber>
-          <ItemText>\\zhs\../app/Src/dianji_driver.c\DJIdown,0x0A</ItemText>
+          <ItemText>\\zhs\../BSP/Src/dianji_driver.c\DJIdown,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>14</count>
@@ -923,7 +918,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\app\Src\CAN.c</PathWithFileName>
+      <PathWithFileName>..\BSP\Src\CAN.c</PathWithFileName>
       <FilenameWithoutPath>CAN.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -935,7 +930,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\app\Src\UART.c</PathWithFileName>
+      <PathWithFileName>..\BSP\Src\UART.c</PathWithFileName>
       <FilenameWithoutPath>UART.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -947,7 +942,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\app\Src\dianji_driver.c</PathWithFileName>
+      <PathWithFileName>..\BSP\Src\dianji_driver.c</PathWithFileName>
       <FilenameWithoutPath>dianji_driver.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -959,7 +954,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\app\Src\sysconfig.c</PathWithFileName>
+      <PathWithFileName>..\BSP\Src\sysconfig.c</PathWithFileName>
       <FilenameWithoutPath>sysconfig.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -971,7 +966,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\app\Src\zaxiang.c</PathWithFileName>
+      <PathWithFileName>..\BSP\Src\zaxiang.c</PathWithFileName>
       <FilenameWithoutPath>zaxiang.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -983,7 +978,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\app\Src\zhuce.c</PathWithFileName>
+      <PathWithFileName>..\BSP\Src\zhuce.c</PathWithFileName>
       <FilenameWithoutPath>zhuce.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -995,7 +990,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\app\Src\task_pid.c</PathWithFileName>
+      <PathWithFileName>..\BSP\Src\task_pid.c</PathWithFileName>
       <FilenameWithoutPath>task_pid.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1007,7 +1002,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\app\Inc\can.h</PathWithFileName>
+      <PathWithFileName>..\BSP\Inc\can.h</PathWithFileName>
       <FilenameWithoutPath>can.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1019,7 +1014,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\app\Src\grav_comp.c</PathWithFileName>
+      <PathWithFileName>..\BSP\Src\grav_comp.c</PathWithFileName>
       <FilenameWithoutPath>grav_comp.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1031,7 +1026,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\app\Inc\dianji_driver.h</PathWithFileName>
+      <PathWithFileName>..\BSP\Inc\dianji_driver.h</PathWithFileName>
       <FilenameWithoutPath>dianji_driver.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1043,7 +1038,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\app\Inc\sysconfig.h</PathWithFileName>
+      <PathWithFileName>..\BSP\Inc\sysconfig.h</PathWithFileName>
       <FilenameWithoutPath>sysconfig.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1055,7 +1050,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\app\Inc\uart.h</PathWithFileName>
+      <PathWithFileName>..\BSP\Inc\uart.h</PathWithFileName>
       <FilenameWithoutPath>uart.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1067,7 +1062,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\app\Inc\zaxiang.h</PathWithFileName>
+      <PathWithFileName>..\BSP\Inc\zaxiang.h</PathWithFileName>
       <FilenameWithoutPath>zaxiang.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1079,7 +1074,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\app\Inc\zhuce.h</PathWithFileName>
+      <PathWithFileName>..\BSP\Inc\zhuce.h</PathWithFileName>
       <FilenameWithoutPath>zhuce.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1091,7 +1086,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\app\Inc\task_pid.h</PathWithFileName>
+      <PathWithFileName>..\BSP\Inc\task_pid.h</PathWithFileName>
       <FilenameWithoutPath>task_pid.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
@@ -1103,7 +1098,7 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\app\Inc\grav_comp.h</PathWithFileName>
+      <PathWithFileName>..\BSP\Inc\grav_comp.h</PathWithFileName>
       <FilenameWithoutPath>grav_comp.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>

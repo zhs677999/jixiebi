@@ -1,9 +1,9 @@
 zhs\taskuart.o: ..\FTask\Src\TaskUART.c
 zhs\taskuart.o: ../FTask/Inc/TaskUART.h
-zhs\taskuart.o: ../app/Inc/UART.h
-zhs\taskuart.o: ../app/Inc/dianjiDriver.h
-zhs\taskuart.o: ../app/Inc/TaskPID.h
-zhs\taskuart.o: ../app/Inc/sysconfig.h
+zhs\taskuart.o: ../BSP/Inc/UART.h
+zhs\taskuart.o: ../BSP/Inc/dianjiDriver.h
+zhs\taskuart.o: ../BSP/Inc/TaskPID.h
+zhs\taskuart.o: ../BSP/Inc/sysconfig.h
 zhs\taskuart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 zhs\taskuart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 zhs\taskuart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h

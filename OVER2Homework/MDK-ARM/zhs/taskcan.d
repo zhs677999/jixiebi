@@ -1,6 +1,6 @@
 zhs\taskcan.o: ..\FTask\Src\TaskCAN.c
 zhs\taskcan.o: ../FTask/Inc/TaskCAN.h
-zhs\taskcan.o: ../app/Inc/sysconfig.h
+zhs\taskcan.o: ../BSP/Inc/sysconfig.h
 zhs\taskcan.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 zhs\taskcan.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 zhs\taskcan.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
@@ -58,4 +58,4 @@ zhs\taskcan.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h
 zhs\taskcan.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h
 zhs\taskcan.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h
 zhs\taskcan.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h
-zhs\taskcan.o: ../app/Inc/zaxiang.h
+zhs\taskcan.o: ../BSP/Inc/zaxiang.h

@@ -1,1 +1,1 @@
-zhs\gravcomp.o: ..\app\Src\gravComp.c
+zhs\gravcomp.o: ..\BSP\Src\gravComp.c

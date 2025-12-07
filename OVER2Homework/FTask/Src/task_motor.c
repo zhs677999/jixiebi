@@ -13,7 +13,6 @@ uint8_t ZeroFlag = 0;
 uint8_t was_running = 0;
 
 extern motor_t YawB,PitchMid;
-extern motor_t DJIup;
 
 #define CANSEND_1 1
 #define CANSEND_2 2
@@ -107,26 +106,6 @@ void Motor_Control(void)
 //		Update_motor();
 		
 		break;
-	}
-	/*——————————CAN2———————————*/
-	switch (CAN2_TurnCount % 3)
-	{
-	case 1:
-	{
-		DJIup_AngleSpeedCurrent_Loop(&DJIup);
-		break;
-	}
-	case 0:
-	{
-		/*RSrun_count[1]++;
-		RS_indexWrite(PitchB_Motor_id, 0x7016, (PitchB_Motor.TargetAngle + 360 * PitchB_Motor.Targetcirnum) / 180 * 3.1415926f, CANSEND_2);
-		break;
-		*/
-	}
-	default:
-	//	Update_motor();
-		break;
-	}
 }
 
 /*
@@ -168,9 +147,6 @@ void Motor_Protect(void)
 
     LKmid.TargetAngle    = LKmid.RealAngle;
     LKmid.Targetcirnum   = LKmid.Realcirnum;
-
-    DJIup.TargetAngle    = DJIup.RealAngle;
-    DJIup.Targetcirnum   = DJIup.Realcirnum;
 
 }
 

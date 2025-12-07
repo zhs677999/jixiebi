@@ -8,7 +8,6 @@
 
 
 extern motor_t YawB, PitchMid;
-extern motor_t DJIup;
 
 //下面的移动到Taskcan.h 方便调用init
 //void CAN_Init(FDCAN_HandleTypeDef *hfdcan);

@@ -913,7 +913,6 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;xQueueGenericSend
 </UL>
-<BR>[Called By]<UL><LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DJIup_AngleSpeedCurrent_Loop
 <LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DJIdown_AngleSpeedCurrent_Loop
 </UL>
 
@@ -926,8 +925,6 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[13e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_Control
 </UL>
 
-<P><STRONG><a name="[d0]"></a>DJIup_AngleSpeedCurrent_Loop</STRONG> (Thumb, 200 bytes, Stack size 16 bytes, dianjidriver.o(i.DJIup_AngleSpeedCurrent_Loop))
-<BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = DJIup_AngleSpeedCurrent_Loop &rArr; DJI_GM6020_CurrentControl &rArr; xQueueGenericSend &rArr; vTaskPlaceOnEventList &rArr; prvAddCurrentTaskToDelayedList &rArr; vListInsert
 </UL>
 <BR>[Calls]<UL><LI><a href="#[cf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Pid_cal
 <LI><a href="#[cc]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DJI_GM6020_CurrentControl
@@ -1664,7 +1661,6 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 44<LI>Call Chain = Manual_Test &rArr; Add_LKmid_Target &rArr; Motor_Add_TargetAngle &rArr; Motor_Set_TargetAngle
 </UL>
 <BR>[Calls]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Add_LKmid_Target
-<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Add_DJIup_Target
 <LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Add_DJIdown_Target
 </UL>
 <BR>[Called By]<UL><LI><a href="#[9c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_StateMachine
@@ -1689,7 +1685,6 @@ Global Symbols
 <BR>[Calls]<UL><LI><a href="#[13d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_Set_TargetAngle
 </UL>
 <BR>[Called By]<UL><LI><a href="#[ba]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Add_LKmid_Target
-<LI><a href="#[b9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Add_DJIup_Target
 <LI><a href="#[b7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Add_DJIdown_Target
 </UL>
 
@@ -1698,7 +1693,6 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[12d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LKmid_AngleSpeedCurrent_Loop
 <LI><a href="#[12b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;LK_MultiLoop_angleRead
-<LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DJIup_AngleSpeedCurrent_Loop
 <LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DJIdown_AngleSpeedCurrent_Loop
 </UL>
 <BR>[Called By]<UL><LI><a href="#[9b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Task_MotorControl
@@ -1745,7 +1739,6 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[cf]"></a>Pid_cal</STRONG> (Thumb, 536 bytes, Stack size 0 bytes, taskpid.o(i.Pid_cal))
-<BR><BR>[Called By]<UL><LI><a href="#[d0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DJIup_AngleSpeedCurrent_Loop
 <LI><a href="#[ce]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;DJIdown_AngleSpeedCurrent_Loop
 </UL>
 
@@ -2564,8 +2557,6 @@ Local Symbols
 <BR>[Called By]<UL><LI><a href="#[138]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Manual_Test
 </UL>
 
-<P><STRONG><a name="[b9]"></a>Add_DJIup_Target</STRONG> (Thumb, 26 bytes, Stack size 16 bytes, taskstate.o(i.Add_DJIup_Target))
-<BR><BR>[Stack]<UL><LI>Max Depth = 28<LI>Call Chain = Add_DJIup_Target &rArr; Motor_Add_TargetAngle &rArr; Motor_Set_TargetAngle
 </UL>
 <BR>[Calls]<UL><LI><a href="#[b8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Motor_Add_TargetAngle
 </UL>

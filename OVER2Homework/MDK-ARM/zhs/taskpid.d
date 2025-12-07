@@ -1,6 +1,6 @@
-zhs\taskpid.o: ..\app\Src\TaskPID.c
-zhs\taskpid.o: ../app/Inc/TaskPID.h
-zhs\taskpid.o: ../app/Inc/sysconfig.h
+zhs\taskpid.o: ..\BSP\Src\TaskPID.c
+zhs\taskpid.o: ../BSP/Inc/TaskPID.h
+zhs\taskpid.o: ../BSP/Inc/sysconfig.h
 zhs\taskpid.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
 zhs\taskpid.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\math.h
 zhs\taskpid.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
