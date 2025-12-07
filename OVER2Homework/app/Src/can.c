@@ -1,6 +1,6 @@
-#include "CAN.h"
+#include "can.h"
 #include "zaxiang.h"
-#include "dianjiDriver.h"
+#include "dianji_driver.h"
 
 //下面来自于User_Can.c，下面主要是接收函数
 

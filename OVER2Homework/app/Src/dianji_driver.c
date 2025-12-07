@@ -1,8 +1,8 @@
-#include "dianjiDriver.h"
-#include "TaskCAN.h"
-//#include "CAN.h"
+#include "dianji_driver.h"
+#include "Taskcan.h"
+//#include "can.h"
 
-#include "TaskPID.h"
+#include "task_pid.h"
 
 
 //下面对应整体电机,写发送数据
@@ -171,7 +171,7 @@ void MotionMotor_Init(void)
 //下面对应DJI电机
 
 //处理电机旋转角度
-//int8_t DJIMotor_AngleHandle(motor_t *mot) 写到CAN.c，与其他代码一致
+//int8_t DJIMotor_AngleHandle(motor_t *mot) 写到can.c，与其他代码一致
 
 
 

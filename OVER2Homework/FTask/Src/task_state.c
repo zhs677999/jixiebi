@@ -1,6 +1,6 @@
 /**Include Header Files**/
-#include "TaskState.h"
-#include "UART.h"
+#include "task_state.h"
+#include "uart.h"
 
 /**Macro Definition**/
 #define TASK_STATEMACHINE_INTERVAL (15)

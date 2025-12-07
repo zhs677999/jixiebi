@@ -1,4 +1,4 @@
-#include "TaskPID.h"
+#include "task_pid.h"
 
 
 //Part1 pid
@@ -29,10 +29,10 @@ uint8_t PID_Parameter_Init(pid_type * pid, PID_MODE mode, float Pidpara[], uint3
 }
 
 /**
- * @brief  pid²ÎÊı¸üĞÂ
- * @note	 ÓÃÓÚ·Ö¶Îpid²ÎÊı¸üĞÂ
- * @param  PID: PID½á¹¹ÌåÖ¸Õë
- * @retval 1£ºÕı³££»0£º´íÎó
+ * @brief  pidå‚æ•°æ›´æ–°
+ * @note	 ç”¨äºåˆ†æ®µpidå‚æ•°æ›´æ–°
+ * @param  PID: PIDç»“æ„ä½“æŒ‡é’ˆ
+ * @retval 1ï¼šæ­£å¸¸ï¼›0ï¼šé”™è¯¯
  */
 uint8_t PID_Parameter_Update(pid_type * pid, float Pidpara[])
 {
@@ -43,12 +43,12 @@ uint8_t PID_Parameter_Update(pid_type * pid, float Pidpara[])
 }
 
 /**
- * @brief  PID¼ÆËãº¯Êı
+ * @brief  PIDè®¡ç®—å‡½æ•°
  * @note
- * @param  *PID: PID½á¹¹ÌåÖ¸Õë
- * @param  dst: Ä¿±êÖµ
- * @param  real: Êµ¼ÊÖµ
- * @retval ¼ÆËãµÃ³öµÄÊä³öÖµ
+ * @param  *PID: PIDç»“æ„ä½“æŒ‡é’ˆ
+ * @param  dst: ç›®æ ‡å€¼
+ * @param  real: å®é™…å€¼
+ * @retval è®¡ç®—å¾—å‡ºçš„è¾“å‡ºå€¼
  */
 
 float Pid_cal(pid_type *PID, float dst, float real)
@@ -95,10 +95,10 @@ float Pid_cal(pid_type *PID, float dst, float real)
 }
 
 /**
- * @brief  PIDÇåÁã
- * @note   Îó²îÊä³öÇåÁã£¬·ÀÖ¹ÖØÆôÊ±µç»úÒì³£Êä³ö
- * @param  *pid: ÒªÇåµÄpid
- * @retval 1£ºÕı³££»0£º´íÎó
+ * @brief  PIDæ¸…é›¶
+ * @note   è¯¯å·®è¾“å‡ºæ¸…é›¶ï¼Œé˜²æ­¢é‡å¯æ—¶ç”µæœºå¼‚å¸¸è¾“å‡º
+ * @param  *pid: è¦æ¸…çš„pid
+ * @retval 1ï¼šæ­£å¸¸ï¼›0ï¼šé”™è¯¯
  */
 uint8_t PID_clear(pid_type *pid)
 {

@@ -2,7 +2,7 @@
 #define ___CAN_H
 
 //#include "sysconfig.h"
-#include "dianjiDriver.h"
+#include "dianji_driver.h"
 
 
 
@@ -10,7 +10,7 @@
 extern motor_t YawB, PitchMid;
 extern motor_t DJIup;
 
-//下面的移动到TaskCAN.h 方便调用init
+//下面的移动到Taskcan.h 方便调用init
 //void CAN_Init(FDCAN_HandleTypeDef *hfdcan);
 //void CAN_Fliter_Init(FDCAN_HandleTypeDef *hfdcan);
 

@@ -1,5 +1,5 @@
-#include "TaskCAN.h"
-#include "zaxiang.h" //debugÊ¹ÓÃ
+#include "task_can.h"
+#include "zaxiang.h" //debugä½¿ç”¨
 
 CanSend_Type CAN_Tx_Msg;
 Debug_Info_t debug_info;
@@ -13,9 +13,9 @@ void Task_CAN(void *parameters)
   {
     tcancount++;
     // start_time3 = xTaskGetTickCount();
-    xQueueReceive(Queue_CANSend, &CAN_Tx_Msg, portMAX_DELAY); // ´ÓCAN¶ÓÁĞ½ÓÊÕĞèÒª·¢ËÍµÄÊı¾İ
+    xQueueReceive(Queue_CANSend, &CAN_Tx_Msg, portMAX_DELAY); // ä»CANé˜Ÿåˆ—æ¥æ”¶éœ€è¦å‘é€çš„æ•°æ®
 
-    switch (CAN_Tx_Msg.CANx) // ¸ù¾İÊı¾İÑ¡¶¨µÄCAN½Ó¿Ú½øĞĞÊı¾İ·¢ËÍ
+    switch (CAN_Tx_Msg.CANx) // æ ¹æ®æ•°æ®é€‰å®šçš„CANæ¥å£è¿›è¡Œæ•°æ®å‘é€
     {
     case CANSEND_1:
       CANTransmit(&hfdcan1, CAN_Tx_Msg.stdid, CAN_Tx_Msg.Data);
@@ -63,9 +63,9 @@ void CANTransmit(FDCAN_HandleTypeDef *hfdcan, uint32_t std_id, uint8_t aData[])
 
 
 /**
- * @brief  CAN³õÊ¼»¯
- * @note   ÂË²¨
- * @param  hfdcan µÄµØÖ·
+ * @brief  CANåˆå§‹åŒ–
+ * @note   æ»¤æ³¢
+ * @param  hfdcan çš„åœ°å€
  * @retval None
  */
 void CAN_Fliter_Init(FDCAN_HandleTypeDef *hfdcan)
@@ -96,7 +96,7 @@ void CAN_Fliter_Init(FDCAN_HandleTypeDef *hfdcan)
     return;
   }
 
-  // ÅäÖÃÂË²¨Æ÷
+  // é…ç½®æ»¤æ³¢å™¨
   sFilterConfig.IdType = IdType;
   sFilterConfig.FilterIndex = 0;
   sFilterConfig.FilterType = FDCAN_FILTER_MASK;
@@ -104,11 +104,11 @@ void CAN_Fliter_Init(FDCAN_HandleTypeDef *hfdcan)
   sFilterConfig.FilterID1 = 0x00; //
   sFilterConfig.FilterID2 = 0x00; //
   HAL_FDCAN_ConfigFilter(hfdcan, &sFilterConfig);
-  /* È«¾Ö¹ıÂËÉèÖÃ */
-  /* ½ÓÊÕµ½ÏûÏ¢IDÓë±ê×¼ID¹ıÂË²»Æ¥Åä£¬²»½ÓÊÜ */
-  /* ½ÓÊÕµ½ÏûÏ¢IDÓëÀ©Õ¹ID¹ıÂË²»Æ¥Åä£¬²»½ÓÊÜ */
-  /* ²»½ÓÊÜ±ê×¼IDÔ¶³ÌÖ¡ */
-  /* ²»½ÓÊÜÀ©Õ¹IDÔ¶³ÌÖ¡ */
+  /* å…¨å±€è¿‡æ»¤è®¾ç½® */
+  /* æ¥æ”¶åˆ°æ¶ˆæ¯IDä¸æ ‡å‡†IDè¿‡æ»¤ä¸åŒ¹é…ï¼Œä¸æ¥å— */
+  /* æ¥æ”¶åˆ°æ¶ˆæ¯IDä¸æ‰©å±•IDè¿‡æ»¤ä¸åŒ¹é…ï¼Œä¸æ¥å— */
+  /* ä¸æ¥å—æ ‡å‡†IDè¿œç¨‹å¸§ */
+  /* ä¸æ¥å—æ‰©å±•IDè¿œç¨‹å¸§ */
   HAL_FDCAN_ConfigGlobalFilter(hfdcan, FDCAN_REJECT, FDCAN_REJECT, FDCAN_REJECT_REMOTE, FDCAN_REJECT_REMOTE);
   HAL_FDCAN_ConfigFifoWatermark(hfdcan, WaterMark, 1);
 }

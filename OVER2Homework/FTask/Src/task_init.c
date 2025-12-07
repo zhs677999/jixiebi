@@ -1,9 +1,9 @@
-#include "TaskInit.h"
+#include "task_init.h"
 
 
-/*ÏÂÃæÁ½¸öÒÑ¾­ÔÚTaskInit.hÀïÒıÓÃµÄ
-#include "TaskCAN.h"
-#include "TaskUART.h"
+/*Ñ¾task_init.hÃµ
+#include "task_can.h"
+#include "Taskuart.h"
 
 */
 
@@ -35,8 +35,8 @@ void TaskInit(void *parameters)
 
     taskENTER_CRITICAL();
 	
-	// ai ÈÏÎª¼Ó£¬Êµ¼ÊÉÏÊÇ²ğÁËÔ­À´µÄBSP_Init
-	Queue_CANSend = xQueueCreate(30, sizeof(CanSend_Type)); // ´´½¨·¢ËÍ¶ÓÁĞ
+	// ai è®¤ä¸ºåŠ ï¼Œå®é™…ä¸Šæ˜¯æ‹†äº†åŸæ¥çš„BSP_Init
+	Queue_CANSend = xQueueCreate(30, sizeof(CanSend_Type)); // åˆ›å»ºå‘é€é˜Ÿåˆ—
 	 BSP_Init_RemoteControl();
 		CAN_Init(&hfdcan1);
 		bsp_start++;
