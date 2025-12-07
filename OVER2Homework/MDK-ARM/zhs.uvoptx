@@ -230,7 +230,7 @@
         <Ww>
           <count>6</count>
           <WinNumber>1</WinNumber>
-          <ItemText>\\zhs\../app/Src/dianjiDriver.c\DJIdown,0x0A</ItemText>
+          <ItemText>\\zhs\../app/Src/motor_driver.c\DJIdown,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>7</count>
@@ -265,7 +265,7 @@
         <Ww>
           <count>13</count>
           <WinNumber>1</WinNumber>
-          <ItemText>\\zhs\../app/Src/dianjiDriver.c\DJIdown,0x0A</ItemText>
+          <ItemText>\\zhs\../app/Src/motor_driver.c\DJIdown,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>14</count>
@@ -947,8 +947,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\app\Src\dianjiDriver.c</PathWithFileName>
-      <FilenameWithoutPath>dianjiDriver.c</FilenameWithoutPath>
+      <PathWithFileName>..\app\Src\motor_driver.c</PathWithFileName>
+      <FilenameWithoutPath>motor_driver.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -971,8 +971,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\app\Src\zaxiang.c</PathWithFileName>
-      <FilenameWithoutPath>zaxiang.c</FilenameWithoutPath>
+      <PathWithFileName>..\app\Src\debug_info.c</PathWithFileName>
+      <FilenameWithoutPath>debug_info.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -983,8 +983,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\app\Src\zhuce.c</PathWithFileName>
-      <FilenameWithoutPath>zhuce.c</FilenameWithoutPath>
+      <PathWithFileName>..\app\Src\arm_motor_init.c</PathWithFileName>
+      <FilenameWithoutPath>arm_motor_init.c</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1031,8 +1031,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\app\Inc\dianjiDriver.h</PathWithFileName>
-      <FilenameWithoutPath>dianjiDriver.h</FilenameWithoutPath>
+      <PathWithFileName>..\app\Inc\motor_driver.h</PathWithFileName>
+      <FilenameWithoutPath>motor_driver.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1067,8 +1067,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\app\Inc\zaxiang.h</PathWithFileName>
-      <FilenameWithoutPath>zaxiang.h</FilenameWithoutPath>
+      <PathWithFileName>..\app\Inc\debug_info.h</PathWithFileName>
+      <FilenameWithoutPath>debug_info.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>
@@ -1079,8 +1079,8 @@
       <tvExp>0</tvExp>
       <tvExpOptDlg>0</tvExpOptDlg>
       <bDave2>0</bDave2>
-      <PathWithFileName>..\app\Inc\zhuce.h</PathWithFileName>
-      <FilenameWithoutPath>zhuce.h</FilenameWithoutPath>
+      <PathWithFileName>..\app\Inc\arm_motor_init.h</PathWithFileName>
+      <FilenameWithoutPath>arm_motor_init.h</FilenameWithoutPath>
       <RteFlg>0</RteFlg>
       <bShared>0</bShared>
     </File>

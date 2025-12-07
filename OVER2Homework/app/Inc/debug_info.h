@@ -1,5 +1,5 @@
-#ifndef __ZAXIANG_
-#define __ZAXIANG_
+#ifndef DEBUG_INFO_H
+#define DEBUG_INFO_H
 
 
 typedef struct {

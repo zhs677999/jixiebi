@@ -1,6 +1,6 @@
 zhs\can.o: ..\app\Src\CAN.c
 zhs\can.o: ../app/Inc/CAN.h
-zhs\can.o: ../app/Inc/dianjiDriver.h
+zhs\can.o: ../app/Inc/motor_driver.h
 zhs\can.o: ../app/Inc/TaskPID.h
 zhs\can.o: ../app/Inc/sysconfig.h
 zhs\can.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
@@ -60,4 +60,4 @@ zhs\can.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h
 zhs\can.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h
 zhs\can.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h
 zhs\can.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h
-zhs\can.o: ../app/Inc/zaxiang.h
+zhs\can.o: ../app/Inc/debug_info.h

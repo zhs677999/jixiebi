@@ -24,10 +24,10 @@ void Task_MotorControl(void *parameters)
 {
     TickType_t xLastWakeUpTime = xTaskGetTickCount();
 
-    MotionMotor_Init();   // PID¡¢µç»ú²ÎÊı³õÊ¼»¯£¬×Ô¼ºĞ´µÄ£¬¶¨ÒåÔÚdianjiDriver
+    MotionMotor_Init();   // PIDã€ç”µæœºå‚æ•°åˆå§‹åŒ–ï¼Œè‡ªå·±å†™çš„ï¼Œå®šä¹‰åœ¨motor_driver
 
 	xLastWakeUpTime = xTaskGetTickCount();
-	// HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1); ´ó×÷ÒµÓÃ²»µ½
+	// HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1); å¤§ä½œä¸šç”¨ä¸åˆ°
 	while (1)
 	{
 
@@ -39,15 +39,15 @@ void Task_MotorControl(void *parameters)
 
 		if (MotorCount % 10 == 0)
 		{
-			MCU_Control_CMD(); // Ë«°åÍ¨ĞÅ·¢ËÍÊı¾İ¸üĞÂ
+			MCU_Control_CMD(); // åŒæ¿é€šä¿¡å‘é€æ•°æ®æ›´æ–°
 			if (uart_first_rx_flag)
 			{
-				Uart_Send(MotorCount); // Ë«°åÍ¨ĞÅÓ²¼ş·¢ËÍ
+				Uart_Send(MotorCount); // åŒæ¿é€šä¿¡ç¡¬ä»¶å‘é€
 			}
-			Uart_Comm_Receive(); // Ë«°åÍ¨ĞÅµôÏß¼ì²â
+			Uart_Comm_Receive(); // åŒæ¿é€šä¿¡æ‰çº¿æ£€æµ‹
 		}
 */
-		if (Motor_Define == 1&& Get_Switch_Value(Switch_Right) ==sw_mid ) // ¼ÇµÃĞ´£¡
+		if (Motor_Define == 1&& Get_Switch_Value(Switch_Right) ==sw_mid ) // è®°å¾—å†™ï¼
 		//if (Motor_Define == 1)
 		{
 			MotorCount++;
@@ -82,7 +82,7 @@ int LK_read=0;
 
 void Motor_Control(void)
 {
-	/*¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªCAN1¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª*/
+	/*â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”CAN1â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”*/
 	switch (CAN1_TurnCount % 4)
 	{
 	case 3:
@@ -108,7 +108,7 @@ void Motor_Control(void)
 		
 		break;
 	}
-	/*¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªCAN2¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª*/
+	/*â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”CAN2â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”*/
 	switch (CAN2_TurnCount % 3)
 	{
 	case 1:
@@ -153,7 +153,7 @@ switch (CAN3_TurnCount % 5)
 
 
 /**
- * @brief    ±£»¤×´Ì¬ÏÂÊ¹ÓÃ£¬Àë¿ª±£»¤Ê±¿ÉÒÔ·ÀÖ¹×ËÌ¬¸Ä±ä
+ * @brief    ä¿æŠ¤çŠ¶æ€ä¸‹ä½¿ç”¨ï¼Œç¦»å¼€ä¿æŠ¤æ—¶å¯ä»¥é˜²æ­¢å§¿æ€æ”¹å˜
  * @note
  * @param
  * @retval
@@ -178,12 +178,12 @@ void Motor_Stop(void)
 {
     static CanSend_Type CANSend;
 
-    // Ñ¡ÔñÄÄÂ· CAN£¬ÕâÀïÏÈÒÔ CAN1 ÎªÀı
+    // é€‰æ‹©å“ªè·¯ CANï¼Œè¿™é‡Œå…ˆä»¥ CAN1 ä¸ºä¾‹
     CANSend.CANx  = CANSEND_1;
-    // ºÍ DJI_GM6020_CurrentControl Ò»Ñù£¬ÓÃµçÁ÷¿ØÖÆÖ¡ ID
-    CANSend.stdid = GM6020_CURRENT_CTRL;   // Ò»°ãÊÇ 0x1FE
+    // å’Œ DJI_GM6020_CurrentControl ä¸€æ ·ï¼Œç”¨ç”µæµæ§åˆ¶å¸§ ID
+    CANSend.stdid = GM6020_CURRENT_CTRL;   // ä¸€èˆ¬æ˜¯ 0x1FE
 
-    // 8 ×Ö½ÚÈ« 0£¬¶ÔÓ¦ 4 ¸öµç»úµçÁ÷È« 0
+    // 8 å­—èŠ‚å…¨ 0ï¼Œå¯¹åº” 4 ä¸ªç”µæœºç”µæµå…¨ 0
     CANSend.Data[0] = 0;
     CANSend.Data[1] = 0;
     CANSend.Data[2] = 0;
@@ -193,16 +193,16 @@ void Motor_Stop(void)
     CANSend.Data[6] = 0;
     CANSend.Data[7] = 0;
 
-    // Èë¶Ó£¬ÓÉ Task_CAN Í³Ò»·¢ËÍ
+    // å…¥é˜Ÿï¼Œç”± Task_CAN ç»Ÿä¸€å‘é€
     xQueueSend(Queue_CANSend, &CANSend, 3);
 	    
 
-    // Ñ¡ÔñÄÄÂ· CAN£¬ÕâÀïÏÈÒÔ CAN1 ÎªÀı
+    // é€‰æ‹©å“ªè·¯ CANï¼Œè¿™é‡Œå…ˆä»¥ CAN1 ä¸ºä¾‹
     CANSend.CANx  = CANSEND_2;
-    // ºÍ DJI_GM6020_CurrentControl Ò»Ñù£¬ÓÃµçÁ÷¿ØÖÆÖ¡ ID
-    CANSend.stdid = GM6020_CURRENT_CTRL;   // Ò»°ãÊÇ 0x1FE
+    // å’Œ DJI_GM6020_CurrentControl ä¸€æ ·ï¼Œç”¨ç”µæµæ§åˆ¶å¸§ ID
+    CANSend.stdid = GM6020_CURRENT_CTRL;   // ä¸€èˆ¬æ˜¯ 0x1FE
 
-    // 8 ×Ö½ÚÈ« 0£¬¶ÔÓ¦ 4 ¸öµç»úµçÁ÷È« 0
+    // 8 å­—èŠ‚å…¨ 0ï¼Œå¯¹åº” 4 ä¸ªç”µæœºç”µæµå…¨ 0
     CANSend.Data[0] = 0;
     CANSend.Data[1] = 0;
     CANSend.Data[2] = 0;
@@ -212,18 +212,18 @@ void Motor_Stop(void)
     CANSend.Data[6] = 0;
     CANSend.Data[7] = 0;
 
-    // Èë¶Ó£¬ÓÉ Task_CAN Í³Ò»·¢ËÍ
+    // å…¥é˜Ÿï¼Œç”± Task_CAN ç»Ÿä¸€å‘é€
     xQueueSend(Queue_CANSend, &CANSend, 3);
 		LK_iqControl(0, LK_mid_id, CANSEND_1);}
 /*
 
-Ğ§¹û£º´ò¿ªµç»ú
+æ•ˆæœï¼šæ‰“å¼€ç”µæœº
 
 
 void Motor_Run(void)
 {
 	run_count++;
-	¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªCAN1¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª
+	â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”CAN1â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
 
 	if (RollB_Run == 0)
 	{
@@ -241,7 +241,7 @@ void Motor_Run(void)
 		PitchF_Run++;
 	}
 
-	¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªCAN2¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª
+	â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”CAN2â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
 	if (RSB_SetMode == 1)
 	{
 		RS_indexRead(PitchB_Motor_id, RS_MOTOR_MODE, CANSEND_2);
@@ -280,7 +280,7 @@ void Motor_Run(void)
 		}
 	}
 
-	¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ªCAN3¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª¡ª
+	â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”CAN3â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”â€”
 	if (PitchB_Run && PitchM_Run && RollB_Run && PitchF_Run && RollF_Run)
 	{
 		Motor_Work = 1;

@@ -58,4 +58,4 @@ zhs\taskcan.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/timers.h
 zhs\taskcan.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h
 zhs\taskcan.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/semphr.h
 zhs\taskcan.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.h
-zhs\taskcan.o: ../app/Inc/zaxiang.h
+zhs\taskcan.o: ../app/Inc/debug_info.h

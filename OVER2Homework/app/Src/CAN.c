@@ -1,25 +1,25 @@
 #include "CAN.h"
-#include "zaxiang.h"
-#include "dianjiDriver.h"
+#include "debug_info.h"
+#include "motor_driver.h"
 
-//ÏÂÃæÀ´×ÔÓÚUser_Can.c£¬ÏÂÃæÖ÷ÒªÊÇ½ÓÊÕº¯Êý
+//ä¸‹é¢æ¥è‡ªäºŽUser_Can.cï¼Œä¸‹é¢ä¸»è¦æ˜¯æŽ¥æ”¶å‡½æ•°
 
  uint32_t can1_irq_cnt = 0;
  uint32_t can2_irq_cnt = 0;
 
 
 /**
- * @brief  FIFO0µÄCAN½ÓÊÕ»Øµ÷º¯Êý
+ * @brief  FIFO0çš„CANæŽ¥æ”¶å›žè°ƒå‡½æ•°
  * @note   CAN1
- * @param  ¶ÔÓ¦µÄCAN¾ä±ú
+ * @param  å¯¹åº”çš„CANå¥æŸ„
  * @retval None
  */
 void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
 {
 	
   FDCAN_RxHeaderTypeDef RxHeader;
-  uint8_t aData[8];                                                 /*½ÓÊÕÊý¾Ý»º´æÊý×é*/
-  HAL_FDCAN_GetRxMessage(hfdcan, FDCAN_RX_FIFO0, &RxHeader, aData); /*´ÓÓÊÏäÖÐÈ¡»ØÊý¾Ý*/
+  uint8_t aData[8];                                                 /*æŽ¥æ”¶æ•°æ®ç¼“å­˜æ•°ç»„*/
+  HAL_FDCAN_GetRxMessage(hfdcan, FDCAN_RX_FIFO0, &RxHeader, aData); /*ä»Žé‚®ç®±ä¸­å–å›žæ•°æ®*/
   if (hfdcan == &hfdcan1)
   {
     Can1Received_infoHandle(RxHeader.Identifier, aData);
@@ -32,16 +32,16 @@ void HAL_FDCAN_RxFifo0Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
 }
 
 /**
- * @brief  FIFO1µÄCAN½ÓÊÕ»Øµ÷º¯Êý
+ * @brief  FIFO1çš„CANæŽ¥æ”¶å›žè°ƒå‡½æ•°
  * @note   CAN2
- * @param  ¶ÔÓ¦µÄCAN¾ä±ú
+ * @param  å¯¹åº”çš„CANå¥æŸ„
  * @retval None
  */
 void HAL_FDCAN_RxFifo1Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
 {
   FDCAN_RxHeaderTypeDef RxHeader;
-  uint8_t aData[8];                                                 /*½ÓÊÕÊý¾Ý»º´æÊý×é*/
-  HAL_FDCAN_GetRxMessage(hfdcan, FDCAN_RX_FIFO1, &RxHeader, aData); /*´ÓÓÊÏäÖÐÈ¡»ØÊý¾Ý*/
+  uint8_t aData[8];                                                 /*æŽ¥æ”¶æ•°æ®ç¼“å­˜æ•°ç»„*/
+  HAL_FDCAN_GetRxMessage(hfdcan, FDCAN_RX_FIFO1, &RxHeader, aData); /*ä»Žé‚®ç®±ä¸­å–å›žæ•°æ®*/
   Can2Received_infoHandle(RxHeader.Identifier, aData);
 	can2_irq_cnt++;
 }
@@ -50,7 +50,7 @@ void HAL_FDCAN_RxFifo1Callback(FDCAN_HandleTypeDef *hfdcan, uint32_t RxFifo0ITs)
 
 
 
-// ÏÂÃæÊÇµç»úµÄ´¦Àíº¯Êý£¬´¦Àí½ÓÊÜµÄ¸÷ÖÖµç»úÊý¾Ý
+// ä¸‹é¢æ˜¯ç”µæœºçš„å¤„ç†å‡½æ•°ï¼Œå¤„ç†æŽ¥å—çš„å„ç§ç”µæœºæ•°æ®
 
 
 
@@ -127,8 +127,8 @@ void LK_Motor_ParaHandle(motor_t *motor, uint8_t aData[])
     if (aData[0] == 0xA0)
     {
         motor->FeedbackData.Temperature = (int8_t)aData[1];
-        motor->FeedbackData.Current = (int16_t)(aData[2] | aData[3] << 8);     // Êµ¼ÊÅ¤¾Ø
-        motor->FeedbackData.RealSpeed = ((int16_t)(aData[4] | aData[5] << 8)); // µç»ú´ø1:10µÄ¼õËÙ±È£¬Ô­Ê¼Êý¾ÝÎªdps
+        motor->FeedbackData.Current = (int16_t)(aData[2] | aData[3] << 8);     // å®žé™…æ‰­çŸ©
+        motor->FeedbackData.RealSpeed = ((int16_t)(aData[4] | aData[5] << 8)); // ç”µæœºå¸¦1:10çš„å‡é€Ÿæ¯”ï¼ŒåŽŸå§‹æ•°æ®ä¸ºdps
         motor->FeedbackData.Mechanical_Angle[0] = (uint16_t)(aData[6] | aData[7] << 8);
         motor->Realrotationrate = motor->FeedbackData.RealSpeed;
     }
@@ -137,8 +137,8 @@ void LK_Motor_ParaHandle(motor_t *motor, uint8_t aData[])
     {
         motor->FeedbackData.Temperature = (int8_t)aData[1];
         motor->FeedbackData.test = (aData[2] | aData[3] << 8) * 66 / 4096;
-        motor->FeedbackData.Current = (int16_t)(aData[2] | aData[3] << 8) * 66 / 4096; // Êµ¼ÊÅ¤¾Ø
-        motor->FeedbackData.RealSpeed = ((int16_t)(aData[4] | aData[5] << 8));         // µç»ú´ø1:10µÄ¼õËÙ±È£¬Ô­Ê¼Êý¾ÝÎªdps
+        motor->FeedbackData.Current = (int16_t)(aData[2] | aData[3] << 8) * 66 / 4096; // å®žé™…æ‰­çŸ©
+        motor->FeedbackData.RealSpeed = ((int16_t)(aData[4] | aData[5] << 8));         // ç”µæœºå¸¦1:10çš„å‡é€Ÿæ¯”ï¼ŒåŽŸå§‹æ•°æ®ä¸ºdps
         motor->FeedbackData.Mechanical_Angle[0] = (uint16_t)(aData[6] | aData[7] << 8);
         motor->Realrotationrate = motor->FeedbackData.RealSpeed;
     }
@@ -146,8 +146,8 @@ void LK_Motor_ParaHandle(motor_t *motor, uint8_t aData[])
     if (aData[0] == 0xA2)
     {
         motor->FeedbackData.Temperature = (int8_t)aData[1];
-        motor->FeedbackData.Current = (int16_t)(aData[2] | aData[3] << 8);     // Êµ¼ÊÅ¤¾Ø
-        motor->FeedbackData.RealSpeed = ((int16_t)(aData[4] | aData[5] << 8)); // µç»ú´ø1:10µÄ¼õËÙ±È£¬Ô­Ê¼Êý¾ÝÎªdps
+        motor->FeedbackData.Current = (int16_t)(aData[2] | aData[3] << 8);     // å®žé™…æ‰­çŸ©
+        motor->FeedbackData.RealSpeed = ((int16_t)(aData[4] | aData[5] << 8)); // ç”µæœºå¸¦1:10çš„å‡é€Ÿæ¯”ï¼ŒåŽŸå§‹æ•°æ®ä¸ºdps
         motor->FeedbackData.Mechanical_Angle[0] = (uint16_t)(aData[6] | aData[7] << 8);
         motor->Realrotationrate = motor->FeedbackData.RealSpeed;
     }
@@ -155,8 +155,8 @@ void LK_Motor_ParaHandle(motor_t *motor, uint8_t aData[])
     if (aData[0] == 0xA4)
     {
         motor->FeedbackData.Temperature = (int8_t)aData[1];
-        motor->FeedbackData.Current = (int16_t)(aData[2] | aData[3] << 8);     // Êµ¼ÊÅ¤¾Ø
-        motor->FeedbackData.RealSpeed = ((int16_t)(aData[4] | aData[5] << 8)); // µç»ú´ø1:10µÄ¼õËÙ±È£¬Ô­Ê¼Êý¾ÝÎªdps
+        motor->FeedbackData.Current = (int16_t)(aData[2] | aData[3] << 8);     // å®žé™…æ‰­çŸ©
+        motor->FeedbackData.RealSpeed = ((int16_t)(aData[4] | aData[5] << 8)); // ç”µæœºå¸¦1:10çš„å‡é€Ÿæ¯”ï¼ŒåŽŸå§‹æ•°æ®ä¸ºdps
         motor->FeedbackData.Mechanical_Angle[0] = (uint16_t)(aData[6] | aData[7] << 8);
         motor->Realrotationrate = motor->FeedbackData.RealSpeed;
     }
@@ -173,7 +173,7 @@ void LK_Motor_ParaHandle(motor_t *motor, uint8_t aData[])
         int64_t test_angleint = 0;
         int16_t test_cirnum = 0;
         float test_angle = 0;
-        // ½Ç¶È»Ø´«
+        // è§’åº¦å›žä¼ 
         test_angle1 = ((aData[7] << 24 | aData[6] << 16) | aData[5] << 8) | aData[4];
         test_angle2 = ((aData[3] << 24 | aData[2] << 16) | aData[1] << 8) | 0;
         test_angleint = (test_angle1 << 32) | test_angle2;
@@ -184,7 +184,7 @@ void LK_Motor_ParaHandle(motor_t *motor, uint8_t aData[])
         {
             test_angle -= 360;
             test_cirnum += 1;
-        } // TODO,È¦Êý´ý¸Ä
+        } // TODO,åœˆæ•°å¾…æ”¹
 
         while (test_angle < 0)
         {
@@ -229,7 +229,7 @@ void Can1Received_infoHandle(uint32_t stdid, uint8_t adata[])
     //DM_infoHandle(&PitchF_Motor, adata);
 		LK_Motor_ParaHandle(&LKmid, adata);
     break;
-/*    Ô­°æ
+/*    åŽŸç‰ˆ
   case RollF_Motor_id:
     DM_infoHandle(&RollF_Motor, adata);
     break;*/

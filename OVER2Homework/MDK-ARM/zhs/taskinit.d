@@ -61,7 +61,7 @@ zhs\taskinit.o: ../Middlewares/Third_Party/FreeRTOS/Source/include/event_groups.
 zhs\taskinit.o: ../FTask/Inc/TaskCan.h
 zhs\taskinit.o: ../FTask/Inc/TaskMOTOR.h
 zhs\taskinit.o: ../app/Inc/CAN.h
-zhs\taskinit.o: ../app/Inc/dianjiDriver.h
+zhs\taskinit.o: ../app/Inc/motor_driver.h
 zhs\taskinit.o: ../app/Inc/TaskPID.h
 zhs\taskinit.o: ../app/Inc/UART.h
 zhs\taskinit.o: ../FTask/Inc/TaskState.h

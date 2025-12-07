@@ -1,6 +1,6 @@
 zhs\uart.o: ..\app\Src\UART.c
 zhs\uart.o: ../app/Inc/UART.h
-zhs\uart.o: ../app/Inc/dianjiDriver.h
+zhs\uart.o: ../app/Inc/motor_driver.h
 zhs\uart.o: ../app/Inc/TaskPID.h
 zhs\uart.o: ../app/Inc/sysconfig.h
 zhs\uart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

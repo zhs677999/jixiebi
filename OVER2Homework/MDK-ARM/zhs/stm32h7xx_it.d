@@ -39,7 +39,7 @@ zhs\stm32h7xx_it.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart.h
 zhs\stm32h7xx_it.o: ../Drivers/STM32H7xx_HAL_Driver/Inc/stm32h7xx_hal_uart_ex.h
 zhs\stm32h7xx_it.o: ../Core/Inc/stm32h7xx_it.h
 zhs\stm32h7xx_it.o: ../app/Inc/UART.h
-zhs\stm32h7xx_it.o: ../app/Inc/dianjiDriver.h
+zhs\stm32h7xx_it.o: ../app/Inc/motor_driver.h
 zhs\stm32h7xx_it.o: ../app/Inc/TaskPID.h
 zhs\stm32h7xx_it.o: ../app/Inc/sysconfig.h
 zhs\stm32h7xx_it.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
