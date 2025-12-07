@@ -1,11 +1,11 @@
-#include "dianjiDriver.h"
+#include "motor_driver.h"
 #include "TaskCAN.h"
 //#include "CAN.h"
 
 #include "TaskPID.h"
 
 
-//ÏÂÃæ¶ÔÓ¦ÕûÌåµç»ú,Ğ´·¢ËÍÊı¾İ
+//ä¸‹é¢å¯¹åº”æ•´ä½“ç”µæœº,å†™å‘é€æ•°æ®
 
 /*
 void MotortypeRegister(motor_t *mot, motor_type type, pid_type *pospid =0, pid_type *speedpid, uint8_t Reductionratio, uint32_t Can_id)
@@ -21,7 +21,7 @@ void MotortypeRegister(motor_t *mot, motor_type type, pid_type *pospid =0, pid_t
 }*/
 
 
-//×¢²áÉÏÏß
+//æ³¨å†Œä¸Šçº¿
 void MotortypeRegister(motor_t *mot, motor_type type,  uint8_t Reductionratio, uint32_t Can_id)
 {
     if (mot != NULL)
@@ -67,7 +67,7 @@ pid_type DJIup_SpeedPid;
 int Motor_Define =0; 
 void MotionMotor_Init(void)
 {
-    // 1) µç»ú×¢²á
+    // 1) ç”µæœºæ³¨å†Œ
     MotortypeRegisterpid(&DJIdown, MOTOR_6020,
                          &DJIdown_PositionPid, &DJIdown_SpeedPid,
                          1, DJI_down_id);
@@ -81,7 +81,7 @@ void MotionMotor_Init(void)
                          &LKmid_PositionPid, &LKmid_SpeedPid,
                          10, LK_mid_id);
 
-    // 2) PID ²ÎÊı
+    // 2) PID å‚æ•°
    float down_angle_para[3] = { 15.0f, 0.0f, 0.001f };   
 	float down_speed_para[3] = { 100.0f, 0.150f, 0.0f };
 //float down_speed_para[3] = { 0.0f, 0.0f, 0.0f };	
@@ -97,8 +97,8 @@ void MotionMotor_Init(void)
     PID_Parameter_Init(DJIdown.PositionPID,
                        PID_POSITION,
                        down_angle_para,
-                       10000.0f,  // MaxOut£º½Ç¶È»·×î´óÊä³ö£¨ÀıÈç×î´óÄ¿±êËÙ¶È£©
-                       500.0f,   // MaxIout£º½Ç¶È»·»ı·ÖÉÏÏŞ
+                       10000.0f,  // MaxOutï¼šè§’åº¦ç¯æœ€å¤§è¾“å‡ºï¼ˆä¾‹å¦‚æœ€å¤§ç›®æ ‡é€Ÿåº¦ï¼‰
+                       500.0f,   // MaxIoutï¼šè§’åº¦ç¯ç§¯åˆ†ä¸Šé™
                        0);      // DeadZone
 
     PID_Parameter_Init(DJIup.PositionPID,
@@ -112,12 +112,12 @@ void MotionMotor_Init(void)
     PID_Parameter_Init(LKmid.PositionPID,
                        PID_POSITION,
                        lk_angle_para,
-                       10000.0f,  // ÕâÀïÏÈºÍ 6020 Ò»Ñù£¬ºóÃæ¸ù¾İÊµ¼ÊÔÙËõ·Å
+                       10000.0f,  // è¿™é‡Œå…ˆå’Œ 6020 ä¸€æ ·ï¼Œåé¢æ ¹æ®å®é™…å†ç¼©æ”¾
                        500.0f,
                        0);
 
-    // -------- ËÙ¶È»· PID£¨Î»ÖÃÊ½£©---------
-    // Êä³öÖ±½Ó¸øµçÁ÷¿ØÖÆ£¨ÀıÈç DJI_GM6020_CurrentControl£©
+    // -------- é€Ÿåº¦ç¯ PIDï¼ˆä½ç½®å¼ï¼‰---------
+    // è¾“å‡ºç›´æ¥ç»™ç”µæµæ§åˆ¶ï¼ˆä¾‹å¦‚ DJI_GM6020_CurrentControlï¼‰
     PID_Parameter_Init(DJIdown.SpeedPID,
                        PID_POSITION,
                        down_speed_para,
@@ -132,7 +132,7 @@ void MotionMotor_Init(void)
                        1000.0f,
                        0);
 
-    // LKmid ËÙ¶È»· PID
+    // LKmid é€Ÿåº¦ç¯ PID
     PID_Parameter_Init(LKmid.SpeedPID,
                        PID_POSITION,
                        lk_speed_para,
@@ -140,7 +140,7 @@ void MotionMotor_Init(void)
                        300.0f,
                        0);
 
-    // 3) ÇåÁã PID ×´Ì¬
+    // 3) æ¸…é›¶ PID çŠ¶æ€
     PID_clear(DJIdown.PositionPID);
     PID_clear(DJIup.PositionPID);
     PID_clear(DJIdown.SpeedPID);
@@ -148,7 +148,7 @@ void MotionMotor_Init(void)
     PID_clear(LKmid.PositionPID);
     PID_clear(LKmid.SpeedPID);
 
-    // 4) ³õÊ¼½Ç¶È / È¦Êı
+    // 4) åˆå§‹è§’åº¦ / åœˆæ•°
     DJIdown.InitAngle   = 117.0f;
     DJIdown.TargetAngle = DJIdown.InitAngle;
     DJIdown.Targetcirnum = DJIdown.Realcirnum;
@@ -172,32 +172,32 @@ void MotionMotor_Init(void)
     Motor_Define = 1;
 }
 
-//ÏÂÃæ¶ÔÓ¦DJIµç»ú
+//ä¸‹é¢å¯¹åº”DJIç”µæœº
 
-//´¦Àíµç»úĞı×ª½Ç¶È
-//int8_t DJIMotor_AngleHandle(motor_t *mot) Ğ´µ½CAN.c£¬ÓëÆäËû´úÂëÒ»ÖÂ
+//å¤„ç†ç”µæœºæ—‹è½¬è§’åº¦
+//int8_t DJIMotor_AngleHandle(motor_t *mot) å†™åˆ°CAN.cï¼Œä¸å…¶ä»–ä»£ç ä¸€è‡´
 
 
 
 /**
- * @brief  ´ó½® GM6020 µç»úµçÁ÷¿ØÖÆ£¨µ¥µç»ú°æ£¬Èë¶Ó£©
- * @param  currentA  Ä¿±êµçÁ÷(A)£¬·¶Î§½¨Òé -3~3
- * @param  motor_id  µç»ú ID£¨1~4£¬¶ÔÓ¦µçÁ÷Ö¡ 0x1FE£©
- * @param  canx      Ê¹ÓÃÄÄÂ· CAN£ºCANSEND_1 / CANSEND_2
+ * @brief  å¤§ç–† GM6020 ç”µæœºç”µæµæ§åˆ¶ï¼ˆå•ç”µæœºç‰ˆï¼Œå…¥é˜Ÿï¼‰
+ * @param  currentA  ç›®æ ‡ç”µæµ(A)ï¼ŒèŒƒå›´å»ºè®® -3~3
+ * @param  motor_id  ç”µæœº IDï¼ˆ1~4ï¼Œå¯¹åº”ç”µæµå¸§ 0x1FEï¼‰
+ * @param  canx      ä½¿ç”¨å“ªè·¯ CANï¼šCANSEND_1 / CANSEND_2
  */
-// Ö±½Ó´« PID Êä³öµÄµçÁ÷Ö¸ÁîÂë£¨int16_t£©£¬¶ÔÓ¦out
+// ç›´æ¥ä¼  PID è¾“å‡ºçš„ç”µæµæŒ‡ä»¤ç ï¼ˆint16_tï¼‰ï¼Œå¯¹åº”out
 void DJI_GM6020_CurrentControl(int16_t cmd, uint8_t motor_id, uint8_t canx)
 {
     static CanSend_Type CANSend;
 
-    // Ñ¡ÓÃÄÄÂ· CAN
+    // é€‰ç”¨å“ªè·¯ CAN
     CANSend.CANx  = canx;
-    CANSend.stdid = GM6020_CURRENT_CTRL;  // 0x1FE£¬¶ÔÓ¦ ID1~4
+    CANSend.stdid = GM6020_CURRENT_CTRL;  // 0x1FEï¼Œå¯¹åº” ID1~4
 
-    // ÏÈÈ«²¿ÖÃ 0
+    // å…ˆå…¨éƒ¨ç½® 0
     int16_t i1 = 0, i2 = 0, i3 = 0, i4 = 0;
 
-    // ¸ù¾İ motor_id °ÑµçÁ÷Âë·Åµ½¶ÔÓ¦Î»ÖÃ
+    // æ ¹æ® motor_id æŠŠç”µæµç æ”¾åˆ°å¯¹åº”ä½ç½®
     switch (motor_id)
     {
     case 1: i1 = cmd; break;
@@ -208,7 +208,7 @@ void DJI_GM6020_CurrentControl(int16_t cmd, uint8_t motor_id, uint8_t canx)
         return;
     }
 
-    // °´ DJI Ğ­Òé´ò°ü£º¸ß×Ö½ÚÔÚÇ°
+    // æŒ‰ DJI åè®®æ‰“åŒ…ï¼šé«˜å­—èŠ‚åœ¨å‰
     CANSend.Data[0] = (uint8_t)((i1 >> 8) & 0xFF);
     CANSend.Data[1] = (uint8_t)( i1       & 0xFF);
     CANSend.Data[2] = (uint8_t)((i2 >> 8) & 0xFF);
@@ -218,7 +218,7 @@ void DJI_GM6020_CurrentControl(int16_t cmd, uint8_t motor_id, uint8_t canx)
     CANSend.Data[6] = (uint8_t)((i4 >> 8) & 0xFF);
     CANSend.Data[7] = (uint8_t)( i4       & 0xFF);
 
-    // Èë¶Ó£¬½»¸ø Task_CAN Í³Ò»·¢ËÍ
+    // å…¥é˜Ÿï¼Œäº¤ç»™ Task_CAN ç»Ÿä¸€å‘é€
     xQueueSend(Queue_CANSend, &CANSend, 3);
 }
 
@@ -248,7 +248,7 @@ void DJIdown_AngleSpeedCurrent_Loop(motor_t *mot)
 }
 
 
-// ==================== ÉÏÔÆÌ¨£ºDJIup ====================
+// ==================== ä¸Šäº‘å°ï¼šDJIup ====================
 void DJIup_AngleSpeedCurrent_Loop(motor_t *mot)
 {
     float Dst_DJIupAngle, Rel_DJIupAngle;
@@ -270,7 +270,7 @@ void DJIup_AngleSpeedCurrent_Loop(motor_t *mot)
 }
 
 
-// ==================== LK ÖĞ¼äµç»ú£ºLKmid ====================
+// ==================== LK ä¸­é—´ç”µæœºï¼šLKmid ====================
 void LKmid_AngleSpeedCurrent_Loop(motor_t *mot)
 {/*
 		float Dst_LKmidAngle = mot->Targetcirnum * 360.0f + mot->TargetAngle;
@@ -320,7 +320,7 @@ void LKmid_AngleSpeedCurrent_Loop(motor_t *mot)
     LK_iqControl(mot->Out, LK_mid_id, CANSEND_1);*/
 		float Dst_LKmidAngle = mot->Targetcirnum * 360.0f + mot->TargetAngle;
 
-    /* Ö±½Óµ÷ÓÃµç»úÄÚ²¿¶à»·Î»ÖÃ¿ØÖÆ£¬×ªµ½Ä¿±êÎ»ÖÃ */
+    /* ç›´æ¥è°ƒç”¨ç”µæœºå†…éƒ¨å¤šç¯ä½ç½®æ§åˆ¶ï¼Œè½¬åˆ°ç›®æ ‡ä½ç½® */
     LK_MultiLoop_angleControl_limited(
         100,                     
         Dst_LKmidAngle,           
@@ -333,12 +333,12 @@ void LKmid_AngleSpeedCurrent_Loop(motor_t *mot)
 
 
 
-/* ´ïÃîµç»ú
+/* è¾¾å¦™ç”µæœº
 void DM_speedpositionControl(uint8_t Motor_ID, uint8_t CAN_ID, float _pos, float _vel)
 {
     uint8_t *pbuf, *vbuf;
 
-    _pos = _pos * 12.5f / 720.0f;  //!!! ºËĞÄËõ·Å
+    _pos = _pos * 12.5f / 720.0f;  //!!! æ ¸å¿ƒç¼©æ”¾
 
     pbuf = (uint8_t *)&_pos;
     vbuf = (uint8_t *)&_vel;
@@ -361,9 +361,9 @@ void DM_speedpositionControl(uint8_t Motor_ID, uint8_t CAN_ID, float _pos, float
 }
 */
 
-//ÏÂÃæ¶ÔÓ¦LKµç»ú
+//ä¸‹é¢å¯¹åº”LKç”µæœº
 
-void LK_MultiLoop_angleControl(int32_t angle_control, uint8_t Motor_ID, uint8_t CAN_ID)//LKµç»ú¿ØÖÆ½Ç¶È
+void LK_MultiLoop_angleControl(int32_t angle_control, uint8_t Motor_ID, uint8_t CAN_ID)//LKç”µæœºæ§åˆ¶è§’åº¦
 {
     static CanSend_Type CANSend;
 

@@ -3569,7 +3569,7 @@
         <PaneID>0</PaneID>
       </Doc>
       <Doc>
-        <Name>..\app\Src\dianjiDriver.c</Name>
+        <Name>..\app\Src\motor_driver.c</Name>
         <ColumnNumber>34</ColumnNumber>
         <TopLine>76</TopLine>
         <CurrentLine>86</CurrentLine>
@@ -3578,7 +3578,7 @@
         <PaneID>0</PaneID>
       </Doc>
       <Doc>
-        <Name>..\app\Src\zhuce.c</Name>
+        <Name>..\app\Src\arm_motor_init.c</Name>
         <ColumnNumber>0</ColumnNumber>
         <TopLine>1</TopLine>
         <CurrentLine>1</CurrentLine>
@@ -3668,7 +3668,7 @@
         <PaneID>0</PaneID>
       </Doc>
       <Doc>
-        <Name>..\app\Inc\zhuce.h</Name>
+        <Name>..\app\Inc\arm_motor_init.h</Name>
         <ColumnNumber>0</ColumnNumber>
         <TopLine>1</TopLine>
         <CurrentLine>8</CurrentLine>
@@ -3704,7 +3704,7 @@
         <PaneID>0</PaneID>
       </Doc>
       <Doc>
-        <Name>..\app\Inc\zaxiang.h</Name>
+        <Name>..\app\Inc\debug_info.h</Name>
         <ColumnNumber>0</ColumnNumber>
         <TopLine>1</TopLine>
         <CurrentLine>16</CurrentLine>

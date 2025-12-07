@@ -1,7 +1,7 @@
 zhs\taskmotor.o: ..\FTask\Src\TaskMOTOR.c
 zhs\taskmotor.o: ../FTask/Inc/TaskMOTOR.h
 zhs\taskmotor.o: ../app/Inc/CAN.h
-zhs\taskmotor.o: ../app/Inc/dianjiDriver.h
+zhs\taskmotor.o: ../app/Inc/motor_driver.h
 zhs\taskmotor.o: ../app/Inc/TaskPID.h
 zhs\taskmotor.o: ../app/Inc/sysconfig.h
 zhs\taskmotor.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

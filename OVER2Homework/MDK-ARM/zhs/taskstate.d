@@ -1,7 +1,7 @@
 zhs\taskstate.o: ..\FTask\Src\TaskState.c
 zhs\taskstate.o: ../FTask/Inc/TaskState.h
 zhs\taskstate.o: ../app/Inc/Can.h
-zhs\taskstate.o: ../app/Inc/dianjiDriver.h
+zhs\taskstate.o: ../app/Inc/motor_driver.h
 zhs\taskstate.o: ../app/Inc/TaskPID.h
 zhs\taskstate.o: ../app/Inc/sysconfig.h
 zhs\taskstate.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h

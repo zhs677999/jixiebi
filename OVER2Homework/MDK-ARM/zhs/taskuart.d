@@ -1,7 +1,7 @@
 zhs\taskuart.o: ..\FTask\Src\TaskUART.c
 zhs\taskuart.o: ../FTask/Inc/TaskUART.h
 zhs\taskuart.o: ../app/Inc/UART.h
-zhs\taskuart.o: ../app/Inc/dianjiDriver.h
+zhs\taskuart.o: ../app/Inc/motor_driver.h
 zhs\taskuart.o: ../app/Inc/TaskPID.h
 zhs\taskuart.o: ../app/Inc/sysconfig.h
 zhs\taskuart.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdlib.h
