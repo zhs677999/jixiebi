@@ -4,9 +4,9 @@
 // #include "sysconfig.h"
 #include "TaskPID.h"
 
-//ÏÂÃæÊÇÕûÌåµç»ú£¨¶ÔÓ¦Motor.h£©
+//ä¸‹é¢æ˜¯æ•´ä½“ç”µæœºï¼ˆå¯¹åº”Motor.hï¼‰
 
-#define MechanicalAngle2RealAngle(Mechanical_Angle) (Mechanical_Angle / 8191.0f * 360.0f) //»úĞµ½Ç£¨0~8191£©->£¨0~360¡ã£©
+#define MechanicalAngle2RealAngle(Mechanical_Angle) (Mechanical_Angle / 8191.0f * 360.0f) //æœºæ¢°è§’ï¼ˆ0~8191ï¼‰->ï¼ˆ0~360Â°ï¼‰
 
 typedef enum
 {
@@ -17,7 +17,7 @@ typedef enum
 		MOTOR_6020,
 		MOTOR_6623,
 	
-		//LKµç»ú
+		//LKç”µæœº
 		MOTOR_4010,
 	
 	
@@ -42,12 +42,12 @@ typedef enum
 
 typedef struct
 {
-	uint32_t    FrameCounter;           //Ö¡ÂÊ¼ÆÊı
+	uint32_t    FrameCounter;           //å¸§ç‡è®¡æ•°
 	int16_t    	RealSpeed;       			  //rpm
 	int16_t    	Current;
 	float test;
 	int16_t			Voltage;
-	uint16_t    Mechanical_Angle[2];    //µç»ú·µ»Ø»úĞµ½Ç [0]:µ±Ç° [1]:ÉÏÒ»´Î
+	uint16_t    Mechanical_Angle[2];    //ç”µæœºè¿”å›æœºæ¢°è§’ [0]:å½“å‰ [1]:ä¸Šä¸€æ¬¡
 	
 	int16_t Temperature;
 
@@ -66,22 +66,22 @@ typedef struct
 	pid_type*   SpeedPID;
 	Motor_Feedback_Data FeedbackData;
 	
-	uint8_t     Reductionratio; 		//¼õËÙ±È
-	int16_t     Oricirnum;          //¼õËÙÇ°×ª×Ó×ª¹ıÈ¦Êı
-	int16_t     Realcirnum;         //Êµ¼Ê×ª¹ıÈ¦Êı
-	int16_t     Targetcirnum;       //Ä¿±êÈ¦Êı
+	uint8_t     Reductionratio; 		//å‡é€Ÿæ¯”
+	int16_t     Oricirnum;          //å‡é€Ÿå‰è½¬å­è½¬è¿‡åœˆæ•°
+	int16_t     Realcirnum;         //å®é™…è½¬è¿‡åœˆæ•°
+	int16_t     Targetcirnum;       //ç›®æ ‡åœˆæ•°
 
-	int16_t     Realrotationrate;   //Êµ¼Ê×ªËÙ  rpm
-	float       Targetrotationrate; //Ä¿±ê×ªËÙ  rpm
+	int16_t     Realrotationrate;   //å®é™…è½¬é€Ÿ  rpm
+	float       Targetrotationrate; //ç›®æ ‡è½¬é€Ÿ  rpm
 
 	float   InitAngle;
-	float   RealAngle;          //Êµ¼Ê½Ç¶È  µ¥Î»¡ã
-	float   TargetAngle;        //Ä¿±ê½Ç¶È  µ¥Î»¡ã
-	int16_t TargetMechAngle;		//Ä¿±ê»úĞµ½Ç¶È
+	float   RealAngle;          //å®é™…è§’åº¦  å•ä½Â°
+	float   TargetAngle;        //ç›®æ ‡è§’åº¦  å•ä½Â°
+	int16_t TargetMechAngle;		//ç›®æ ‡æœºæ¢°è§’åº¦
 
-	int16_t     	Out;                //PID¼ÆËãºóÊä³öÖµ
+	int16_t     	Out;                //PIDè®¡ç®—åè¾“å‡ºå€¼
 	
-	//BlockStruct_t Blockstate;       //µç»ú¶Â×ª×´Ì¬
+	//BlockStruct_t Blockstate;       //ç”µæœºå µè½¬çŠ¶æ€
 	
 	uint8_t First_Frame;
 		
@@ -99,14 +99,14 @@ typedef enum
 void MotionMotor_Init(void);
 
 extern int Motor_Define;
-//ÏÂÃæÊÇDJIµç»ú
-#define GM6020_CURRENT_CTRL   0x1FEU     // µçÁ÷¿ØÖÆ ID(µç»ú1~4)
-#define GM6020_FEEDBACK_ID   0x204U     // ·´À¡ ID = 0x204 + µç»úID
+void PitchMid_AngleSpeedCurrent_Loop(motor_t *mot);
+void YawB_AngleSpeedCurrent_Loop(motor_t *mot);
+#define GM6020_FEEDBACK_ID   0x204U     // åé¦ˆ ID = 0x204 + ç”µæœºID
 
 
 
 
-// ÏÂÃæÊÇLKµç»ú
+// ä¸‹é¢æ˜¯LKç”µæœº
 #define LK_STDID 0x140
 #define LK_ENCODER_RESOLUTION  16384.0f  
 void LK_MultiLoop_angleRead(uint8_t Motor_ID, uint8_t CAN_ID);
@@ -124,6 +124,6 @@ void MotortypeRegisterpid(motor_t *mot,
                        uint8_t Reductionratio,
                        uint32_t Can_id);
 
-// void LK_Motor_ParaHandle(motor_t *mot, uint32_t stdid, uint8_t adata[]); CAN.cÖĞ¶¨ÒåÁË
+// void LK_Motor_ParaHandle(motor_t *mot, uint32_t stdid, uint8_t adata[]); CAN.cä¸­å®šä¹‰äº†
 
 #endif

@@ -12,11 +12,11 @@ SubState_t SubState;
 ControlMode_t ControlMode;
 PCMode_t PCMode;
 // Key_Value:Remote Control
-Roller_State_t Roller_State[3] = {Roller_Mid, Roller_Mid, Roller_Mid}; // ²¦ÂÖ·½Ïò
-Stick_Vert_t StickL_Vert[3] = {Stick_Mid_V, Stick_Mid_V, Stick_Mid_V}; // ×óÒ¡¸ËÊúÖ±·½Ïò
-Stick_Hori_t StickL_Hori[3] = {Stick_Mid_H, Stick_Mid_H, Stick_Mid_H}; // ×óÒ¡¸ËË®Æ½·½Ïò
-Stick_Vert_t StickR_Vert[3] = {Stick_Mid_V, Stick_Mid_V, Stick_Mid_V}; // ÓÒÒ¡¸ËÊúÖ±·½Ïò
-Stick_Hori_t StickR_Hori[3] = {Stick_Mid_H, Stick_Mid_H, Stick_Mid_H}; // ÓÒÒ¡¸ËË®Æ½·½Ïò
+Roller_State_t Roller_State[3] = {Roller_Mid, Roller_Mid, Roller_Mid}; // æ‹¨è½®æ–¹å‘
+Stick_Vert_t StickL_Vert[3] = {Stick_Mid_V, Stick_Mid_V, Stick_Mid_V}; // å·¦æ‘‡æ†ç«–ç›´æ–¹å‘
+Stick_Hori_t StickL_Hori[3] = {Stick_Mid_H, Stick_Mid_H, Stick_Mid_H}; // å·¦æ‘‡æ†æ°´å¹³æ–¹å‘
+Stick_Vert_t StickR_Vert[3] = {Stick_Mid_V, Stick_Mid_V, Stick_Mid_V}; // å³æ‘‡æ†ç«–ç›´æ–¹å‘
+Stick_Hori_t StickR_Hori[3] = {Stick_Mid_H, Stick_Mid_H, Stick_Mid_H}; // å³æ‘‡æ†æ°´å¹³æ–¹å‘
 // Key_Value:Keyboard
 Key_Value_t W[3] = {UnPressed, UnPressed, UnPressed};
 Key_Value_t S[3] = {UnPressed, UnPressed, UnPressed};
@@ -36,7 +36,7 @@ Key_Value_t CTRL[3] = {UnPressed, UnPressed, UnPressed};
 Key_Value_t SHIFT[3] = {UnPressed, UnPressed, UnPressed};
 Key_Value_t Mouse_Left[3] = {UnPressed, UnPressed, UnPressed};
 Key_Value_t Mouse_Right[3] = {UnPressed, UnPressed, UnPressed};
-// Êó±êËÙ¶È
+// é¼ æ ‡é€Ÿåº¦
 float Out_X = 0;
 float Out_Y = 0;
 float XX = 0;
@@ -44,12 +44,12 @@ float YY = 0;
 float Mouse_Speed_X[9] = {0};
 float Mouse_Speed_Y[9] = {0};
 
-// ¶Â×ª¼ì²â
-SubState_t SubState_Last;  // ÓÃÓÚ¶Â×ªÔËĞĞÅĞ¶Ï
-uint8_t SubState_flag = 0; // ÓÃÓÚ¼ÇÂ¼´Ó±£»¤×´Ì¬ÇĞ³öµÄ´ÎÊı
-uint8_t Reset_flag = 0;    // ÓÃÓÚÈíÖØÆô
+// å µè½¬æ£€æµ‹
+SubState_t SubState_Last;  // ç”¨äºå µè½¬è¿è¡Œåˆ¤æ–­
+uint8_t SubState_flag = 0; // ç”¨äºè®°å½•ä»ä¿æŠ¤çŠ¶æ€åˆ‡å‡ºçš„æ¬¡æ•°
+uint8_t Reset_flag = 0;    // ç”¨äºè½¯é‡å¯
 
-/* ×ËÌ¬½âËã
+/* å§¿æ€è§£ç®—
 Vector_t Real_Arm_Pos;
 Vector_t Target_Arm_Pos;
 float Trans_Matrix[4][4];
@@ -81,7 +81,7 @@ void Task_StateMachine(void *parameters)
     {
 
         stmacount++;
-        // ¸ù¾İÒ£¿ØÆ÷µÄÊı¾İ½âËã±¾µØ±äÁ¿
+        // æ ¹æ®é¥æ§å™¨çš„æ•°æ®è§£ç®—æœ¬åœ°å˜é‡
         StateMachine_Update();
 				Manual_Test();
         /*if (GetSubState() == SubState_Protect) // Protect_flag == 1
@@ -97,20 +97,20 @@ void Task_StateMachine(void *parameters)
 
                 //Motor_Calibrate();
                // RC_Chassis_Control();
-                Manual_Test(); // Õı³£Ò£¿ØÆ÷Âß¼­
+                Manual_Test(); // æ­£å¸¸é¥æ§å™¨é€»è¾‘
             }
 
             
         }*/
 
-        //ulTaskNotifyTake(pdTRUE, portMAX_DELAY);ÎÒ²»Ã÷°×ÎªÊ²Ã´Ğ¡éÙÃ»ÓĞ¶ÔÓ¦´úÂë
+        //ulTaskNotifyTake(pdTRUE, portMAX_DELAY);æˆ‘ä¸æ˜ç™½ä¸ºä»€ä¹ˆå°æ©˜æ²¡æœ‰å¯¹åº”ä»£ç 
 				vTaskDelay(pdMS_TO_TICKS(TASK_STATEMACHINE_INTERVAL));
     }
 }
 
 void Switch_Update(void)
 {
-    // Ã¿´Î¸üĞÂ[0]ÖĞÊı¾İ£¬ÆäÓàÒÀ´Î´æ´¢
+    // æ¯æ¬¡æ›´æ–°[0]ä¸­æ•°æ®ï¼Œå…¶ä½™ä¾æ¬¡å­˜å‚¨
     Roller_State[2] = Roller_State[1];
     Roller_State[1] = Roller_State[0];
 
@@ -126,7 +126,7 @@ void Switch_Update(void)
     StickR_Hori[2] = StickR_Hori[1];
     StickR_Hori[1] = StickR_Hori[0];
 
-    // ²¦ÂÖ
+    // æ‹¨è½®
     if (Get_Channel_Value(CH_Roll) < -0.2f && Get_Channel_Value(CH_Roll) >= -0.6f) //
         Roller_State[0] = Roller_Small_Front;
     else if (Get_Channel_Value(CH_Roll) > 0.2f && Get_Channel_Value(CH_Roll) <= 0.6f) //
@@ -138,8 +138,8 @@ void Switch_Update(void)
     else
         Roller_State[0] = Roller_Mid;
 
-    // ×óÒ¡¸Ë
-    if ((Get_Channel_Value(CH_LeftHori)) < 0.2f && (Get_Channel_Value(CH_LeftHori)) > -0.2f) // ±ÜÃâÎó²¦¸Ë£¬µ±Ç°ºóÒ¡¸ËµÄÊ±ºòÏŞÖÆ×óÓÒÒ¡¸ËÔÚ+-20%
+    // å·¦æ‘‡æ†
+    if ((Get_Channel_Value(CH_LeftHori)) < 0.2f && (Get_Channel_Value(CH_LeftHori)) > -0.2f) // é¿å…è¯¯æ‹¨æ†ï¼Œå½“å‰åæ‘‡æ†çš„æ—¶å€™é™åˆ¶å·¦å³æ‘‡æ†åœ¨+-20%
     {
         if (Get_Channel_Value(CH_LeftVert) < -0.2f && Get_Channel_Value(CH_LeftVert) >= -0.6f)
             StickL_Vert[0] = Stick_Small_Back;
@@ -153,7 +153,7 @@ void Switch_Update(void)
             StickL_Vert[0] = Stick_Mid_V;
     }
 
-    if ((Get_Channel_Value(CH_LeftVert)) < 0.2f && (Get_Channel_Value(CH_LeftVert)) > -0.2f) // ±ÜÃâÎó²¦¸Ë£¬µ±Ç°ºóÒ¡¸ËµÄÊ±ºòÏŞÖÆ×óÓÒÒ¡¸ËÔÚ+-20%
+    if ((Get_Channel_Value(CH_LeftVert)) < 0.2f && (Get_Channel_Value(CH_LeftVert)) > -0.2f) // é¿å…è¯¯æ‹¨æ†ï¼Œå½“å‰åæ‘‡æ†çš„æ—¶å€™é™åˆ¶å·¦å³æ‘‡æ†åœ¨+-20%
     {
         if (Get_Channel_Value(CH_LeftHori) < -0.2f && Get_Channel_Value(CH_LeftHori) >= -0.6f)
             StickL_Hori[0] = Stick_Small_Left;
@@ -167,8 +167,8 @@ void Switch_Update(void)
             StickL_Hori[0] = Stick_Mid_H;
     }
 
-    // ÓÒÒ¡¸Ë
-    if ((Get_Channel_Value(CH_RightHori)) < 0.2f && (Get_Channel_Value(CH_RightHori)) > -0.2f) // ±ÜÃâÎó²¦¸Ë£¬µ±Ç°ºóÒ¡¸ËµÄÊ±ºòÏŞÖÆ×óÓÒÒ¡¸ËÔÚ+-20%
+    // å³æ‘‡æ†
+    if ((Get_Channel_Value(CH_RightHori)) < 0.2f && (Get_Channel_Value(CH_RightHori)) > -0.2f) // é¿å…è¯¯æ‹¨æ†ï¼Œå½“å‰åæ‘‡æ†çš„æ—¶å€™é™åˆ¶å·¦å³æ‘‡æ†åœ¨+-20%
     {
         if (Get_Channel_Value(CH_RightVert) < -0.2f && Get_Channel_Value(CH_RightVert) >= -0.6f)
             StickR_Vert[0] = Stick_Small_Back;
@@ -182,7 +182,7 @@ void Switch_Update(void)
             StickR_Vert[0] = Stick_Mid_V;
     }
 
-    if ((Get_Channel_Value(CH_RightVert)) < 0.2f && (Get_Channel_Value(CH_RightVert)) > -0.2f) // ±ÜÃâÎó²¦¸Ë£¬µ±Ç°ºóÒ¡¸ËµÄÊ±ºòÏŞÖÆ×óÓÒÒ¡¸ËÔÚ+-20%
+    if ((Get_Channel_Value(CH_RightVert)) < 0.2f && (Get_Channel_Value(CH_RightVert)) > -0.2f) // é¿å…è¯¯æ‹¨æ†ï¼Œå½“å‰åæ‘‡æ†çš„æ—¶å€™é™åˆ¶å·¦å³æ‘‡æ†åœ¨+-20%
     {
         if (Get_Channel_Value(CH_RightHori) < -0.2f && Get_Channel_Value(CH_RightHori) >= -0.6f)
             StickR_Hori[0] = Stick_Small_Left;
@@ -221,7 +221,7 @@ void StatePara_Init(void)
  * @brief  StateMachine Update
  * @note
  * @param  None
- * @retval ×¢Òâº¯ÊıÖ®¼äµ÷ÓÃË³Ğò£¡£¡£¡È·±£ÊµÊ±ÏìÓ¦
+ * @retval æ³¨æ„å‡½æ•°ä¹‹é—´è°ƒç”¨é¡ºåºï¼ï¼ï¼ç¡®ä¿å®æ—¶å“åº”
  */
 void StateMachine_Update(void)
 {
@@ -266,7 +266,7 @@ uint8_t CleanSwTrigger(rc_switch sw)
  */
 void MainState_Update(void)
 {
-    // Ò£¿ØÆ÷Ö÷×´Ì¬¸üĞÂ
+    // é¥æ§å™¨ä¸»çŠ¶æ€æ›´æ–°
     switch (Get_Switch_Value(Switch_Left))
     {
     case sw_up:
@@ -306,11 +306,11 @@ void SubState_Update(void)
     switch (MainState)
     {
     case MainState_Debug:
-        if (Get_Switch_Value(Switch_Right) == sw_up) // Ë«²¦ÉÏÎ»±£»¤
+        if (Get_Switch_Value(Switch_Right) == sw_up) // åŒæ‹¨ä¸Šä½ä¿æŠ¤
             SubState = SubState_Protect;
         else if (Get_Switch_Value(Switch_Right) == sw_mid)
             SubState = SubState_Test;
-        else if (Get_Switch_Value(Switch_Right) == sw_down) // ×óÉÏÓÒÏÂÎª¼üÊó¿ØÖÆ
+        else if (Get_Switch_Value(Switch_Right) == sw_down) // å·¦ä¸Šå³ä¸‹ä¸ºé”®é¼ æ§åˆ¶
             SubState = SubState_PC;
 
         break;
@@ -326,7 +326,7 @@ void SubState_Update(void)
         break;
 
     case MainState_Extend:
-        if (Get_Switch_Value(Switch_Right) == sw_up) // ×óÏÂÓÒÉÏ
+        if (Get_Switch_Value(Switch_Right) == sw_up) // å·¦ä¸‹å³ä¸Š
             SubState = SubState_Gimbal;
         else if (Get_Switch_Value(Switch_Right) == sw_mid)
             SubState = SubState_Branch;
@@ -339,7 +339,7 @@ void SubState_Update(void)
         break;
     }
 /*
-    // ¶Ô´Ó×´Ì¬±ä»¯Çé¿ö½øĞĞ¼ÇÂ¼
+    // å¯¹ä»çŠ¶æ€å˜åŒ–æƒ…å†µè¿›è¡Œè®°å½•
     if (SubState_Last == SubState_Protect && SubState != SubState_Protect)
     {
         SubState_flag++;
@@ -367,31 +367,31 @@ void SubState_Update(void)
 }
 
 
-static inline void Add_DJIdown_Target(float add_deg)
+static inline void Add_YawB_Target(float add_deg)
 {
-    Motor_Add_TargetAngle(&DJIdown, add_deg);
+    Motor_Add_TargetAngle(&YawB, add_deg);
 }
 
 
-static inline void Add_LKmid_Target(float add_deg)
+static inline void Add_PitchMid_Target(float add_deg)
 {
-    Motor_Add_TargetAngle(&LKmid, add_deg);
+    Motor_Add_TargetAngle(&PitchMid, add_deg);
 }
 
-// Ôö¼Ó/¼õÉÙ DJIup µÄÄ¿±ê½Ç¶È£¨±ÈÈçÓÃÀ´×ö yaw£©
-static inline void Add_DJIup_Target(float add_deg)
-{
-    Motor_Add_TargetAngle(&DJIup, add_deg);
-}
-
+    // Ò¡Ç°/   YawB
+        Add_YawB_Target(step);
+        Add_YawB_Target(-step);
+    // Ò¡Ç°/   PitchMid
+        Add_PitchMid_Target(step);
+        Add_PitchMid_Target(-step);
 int ctr_down=0;
 
 void Manual_Test(void)
 {
-    // Ã¿´ÎÒ£¸Ë´¥·¢Ê±Ôö¼Ó/¼õÉÙµÄ½Ç¶È£¨µ¥Î»£º¶È£©
+    // æ¯æ¬¡é¥æ†è§¦å‘æ—¶å¢åŠ /å‡å°‘çš„è§’åº¦ï¼ˆå•ä½ï¼šåº¦ï¼‰
     const float step = 0.5f;
 
-    // ×óÒ¡¸ËÇ°/ºó ¡ú ¿ØÖÆ DJIdown
+    // å·¦æ‘‡æ†å‰/å â†’ æ§åˆ¶ DJIdown
     if (StickL_Vert[0] == Stick_Big_Front && StickL_Vert[1] == Stick_Big_Front)
     {
         Add_DJIdown_Target(step);
@@ -403,7 +403,7 @@ void Manual_Test(void)
 			ctr_down++;
     }
 
-    // ÓÒÒ¡¸ËÇ°/ºó ¡ú ¿ØÖÆ LKmid
+    // å³æ‘‡æ†å‰/å â†’ æ§åˆ¶ LKmid
     if (StickR_Vert[0] == Stick_Big_Front && StickR_Vert[1] == Stick_Big_Front)
     {
         Add_LKmid_Target(step);
@@ -413,7 +413,7 @@ void Manual_Test(void)
         Add_LKmid_Target(-step);
     }
 
-    // ÓÒÒ¡¸Ë×ó/ÓÒ ¡ú ¿ØÖÆ DJIup£¨±ÈÈç yaw£©
+    // å³æ‘‡æ†å·¦/å³ â†’ æ§åˆ¶ DJIupï¼ˆæ¯”å¦‚ yawï¼‰
     if (StickR_Hori[0] == Stick_Big_Left && StickR_Hori[1] == Stick_Big_Left)
     {
         Add_DJIup_Target(-step);

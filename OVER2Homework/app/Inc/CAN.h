@@ -7,15 +7,15 @@
 
 
 
-extern motor_t DJIdown, LKmid;
+extern motor_t YawB, PitchMid;
 extern motor_t DJIup;
 
-//下面的移动到TaskCAN.h 方便调用init
+//涓嬮潰鐨勭Щ鍔ㄥ埌TaskCAN.h 鏂逛究璋冪敤init
 //void CAN_Init(FDCAN_HandleTypeDef *hfdcan);
 //void CAN_Fliter_Init(FDCAN_HandleTypeDef *hfdcan);
 
 void DJIMotor_ParaHandle(motor_t *mot, uint8_t adata[]);
-int8_t DJIMotor_AngleHandle(motor_t *mot); //DJI电机处理
+int8_t DJIMotor_AngleHandle(motor_t *mot); //DJI鐢垫満澶勭悊
 void LK_Motor_ParaHandle(motor_t *motor, uint8_t aData[]);
 
 

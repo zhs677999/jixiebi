@@ -1,7 +1,6 @@
 #include "UART.h"
 
 
-float ch_down;
 int update_angle_succeed=0;
 int update_angle_succeed_getfunc=0;
 extern UART_HandleTypeDef huart5;
@@ -11,14 +10,14 @@ RCDecoding_Type Remote_controler;
 uint8_t RCBuffer[2][RC_FRAME_LEN + RC_FRAME_LEN_BACK];
 uint8_t UartReceive_Data[UartCommLen];
 
- extern motor_t DJIdown,LKmid;
+ extern motor_t YawB,PitchMid;
  extern motor_t DJIup;
 
-/*Roller_State_t Roller_State[3] = {Roller_Mid, Roller_Mid, Roller_Mid}; // ²¦ÂÖ·½Ïò
-Stick_Vert_t StickL_Vert[3] = {Stick_Mid_V, Stick_Mid_V, Stick_Mid_V}; // ×óÒ¡¸ËÊúÖ±·½Ïò
-Stick_Hori_t StickL_Hori[3] = {Stick_Mid_H, Stick_Mid_H, Stick_Mid_H}; // ×óÒ¡¸ËË®Æ½·½Ïò
-Stick_Vert_t StickR_Vert[3] = {Stick_Mid_V, Stick_Mid_V, Stick_Mid_V}; // ÓÒÒ¡¸ËÊúÖ±·½Ïò
-Stick_Hori_t StickR_Hori[3] = {Stick_Mid_H, Stick_Mid_H, Stick_Mid_H}; // ÓÒÒ¡¸ËË®Æ½·½Ïò
+/*Roller_State_t Roller_State[3] = {Roller_Mid, Roller_Mid, Roller_Mid}; // æ‹¨è½®æ–¹å‘
+Stick_Vert_t StickL_Vert[3] = {Stick_Mid_V, Stick_Mid_V, Stick_Mid_V}; // å·¦æ‘‡æ†ç«–ç›´æ–¹å‘
+Stick_Hori_t StickL_Hori[3] = {Stick_Mid_H, Stick_Mid_H, Stick_Mid_H}; // å·¦æ‘‡æ†æ°´å¹³æ–¹å‘
+Stick_Vert_t StickR_Vert[3] = {Stick_Mid_V, Stick_Mid_V, Stick_Mid_V}; // å³æ‘‡æ†ç«–ç›´æ–¹å‘
+Stick_Hori_t StickR_Hori[3] = {Stick_Mid_H, Stick_Mid_H, Stick_Mid_H}; // å³æ‘‡æ†æ°´å¹³æ–¹å‘
 */
 
 uint8_t GetRcIndex(void)
@@ -82,7 +81,7 @@ uint8_t RcDataUpdate(void)
 
 
 
-//ºËĞÄ£º¶ÁÈ¡Êı¾İµÄ´úÂë£¬ÆäËûº¯ÊıÖ»Òª¶Á¾ÍĞĞ
+//æ ¸å¿ƒï¼šè¯»å–æ•°æ®çš„ä»£ç ï¼Œå…¶ä»–å‡½æ•°åªè¦è¯»å°±è¡Œ
 float Get_Channel_Value(channel_num channel)
 {
     switch (channel)
@@ -133,23 +132,23 @@ switch_state Get_Switch_Value(rc_switch sw)
 
 void RC_IRQHandler(UART_HandleTypeDef *huart)
 {
-    BaseType_t xHigherPriorityTaskWoken = pdFALSE; /*Í¨ÖªÖµÎª¶ş½øÖÆĞÅºÅÁ¿£¬ÓÃÕâ¸öÍ¨Öª»áÊ¹Í¨ÖªÖ»½øĞĞÒ»´Î*/
+    BaseType_t xHigherPriorityTaskWoken = pdFALSE; /*é€šçŸ¥å€¼ä¸ºäºŒè¿›åˆ¶ä¿¡å·é‡ï¼Œç”¨è¿™ä¸ªé€šçŸ¥ä¼šä½¿é€šçŸ¥åªè¿›è¡Œä¸€æ¬¡*/
 
-    static uint8_t this_time_rx_len = 0; /*±¾´Î½ÓÊÕ³¤¶È*/
+    static uint8_t this_time_rx_len = 0; /*æœ¬æ¬¡æ¥æ”¶é•¿åº¦*/
     if (__HAL_UART_GET_IT_SOURCE(&huart5, UART_IT_IDLE) != RESET)
     {
-        /*Çå³ı¿ÕÏĞÖĞ¶Ï±êÖ¾Î»*/
+        /*æ¸…é™¤ç©ºé—²ä¸­æ–­æ ‡å¿—ä½*/
 
 
         __HAL_UART_CLEAR_IDLEFLAG(huart);
 
-        /*¹Ø±ÕDMA½ÓÊÕ*/
+        /*å…³é—­DMAæ¥æ”¶*/
         __HAL_DMA_DISABLE(&hdma_uart5_rx);
 
-        /*¼ÆËã±¾´ÎÖ¡³¤¶È*/
+        /*è®¡ç®—æœ¬æ¬¡å¸§é•¿åº¦*/
         this_time_rx_len = (RC_FRAME_LEN + RC_FRAME_LEN_BACK) - __HAL_DMA_GET_COUNTER(&hdma_uart5_rx);
 
-        /*¼ÇÂ¼±¾´ÎµÄDMAÄÚ´æ*/
+        /*è®°å½•æœ¬æ¬¡çš„DMAå†…å­˜*/
         if ((((DMA_Stream_TypeDef *)hdma_uart5_rx.Instance)->CR & DMA_SxCR_CT) != RESET)
         {
             /* Current memory buffer used is Memory 1 */
@@ -163,26 +162,26 @@ void RC_IRQHandler(UART_HandleTypeDef *huart)
             Remote_controler.buffer_index = MEMORY0;
         }
 
-        /*Èç¹û±¾´ÎÖ¡³¤¶ÈÓëRCÖ¡³¤¶È²»µÈ£¬ÖØÆôÒ£¿Ø½ÓÊÕÄÚ´æ*/
+        /*å¦‚æœæœ¬æ¬¡å¸§é•¿åº¦ä¸RCå¸§é•¿åº¦ä¸ç­‰ï¼Œé‡å¯é¥æ§æ¥æ”¶å†…å­˜*/
         if (this_time_rx_len != RC_FRAME_LEN)
             Remote_controler.buffer_index = MEMORYRESET;
 
-        /*Éè¶¨DMA·¢ËÍµÄ³¤¶È*/
+        /*è®¾å®šDMAå‘é€çš„é•¿åº¦*/
         __HAL_DMA_SET_COUNTER(&hdma_uart5_rx, (RC_FRAME_LEN + RC_FRAME_LEN_BACK));
 
-        /*ÖØÆôDMA½ÓÊÕ*/
+        /*é‡å¯DMAæ¥æ”¶*/
         __HAL_DMA_ENABLE(&hdma_uart5_rx);
 
         RcDataUpdate();
 
-        // ·¢ËÍÈÎÎñÍ¨Öª¸øÒ£¿ØÈÎÎñ
+        // å‘é€ä»»åŠ¡é€šçŸ¥ç»™é¥æ§ä»»åŠ¡
 /*
-		ÎÒÈÏÎªÕâÊÇ×´Ì¬»ú
+		æˆ‘è®¤ä¸ºè¿™æ˜¯çŠ¶æ€æœº
         vTaskNotifyGiveFromISR(STATEMACHINE_TASK_Handle, &xHigherPriorityTaskWoken);
         if (xHigherPriorityTaskWoken)
             change_count++;
 */
-        /*Ç¿ÖÆFreeRTOSÈÎÎñÇĞ»»*/
+        /*å¼ºåˆ¶FreeRTOSä»»åŠ¡åˆ‡æ¢*/
         portYIELD_FROM_ISR(xHigherPriorityTaskWoken);
     }
 }
@@ -215,9 +214,9 @@ void Updata_Trigger(void)
 
 void BSP_Init_RemoteControl(void)
 {
-    Remote_controler.framecounter = 0;           /*Ö¡ÂÊ¼ÆÊı*/
-    Remote_controler.offline_check = 0;          /*ÀëÏß¼ÆÊı*/
-    Remote_controler.buffer_index = MEMORYRESET; /*´®¿Ú»º´æÇøÄ¬ÈÏÖµ*/
+    Remote_controler.framecounter = 0;           /*å¸§ç‡è®¡æ•°*/
+    Remote_controler.offline_check = 0;          /*ç¦»çº¿è®¡æ•°*/
+    Remote_controler.buffer_index = MEMORYRESET; /*ä¸²å£ç¼“å­˜åŒºé»˜è®¤å€¼*/
     SET_BIT(RC_HUART.Instance->CR3, USART_CR3_DMAR);
     HAL_DMAEx_MultiBufferStart(RC_HUART.hdmarx, (uint32_t)&(RC_HUART.Instance->RDR), (uint32_t)&RCBuffer[0][0], (uint32_t)&RCBuffer[1][0], (RC_FRAME_LEN + RC_FRAME_LEN_BACK));
     __HAL_UART_ENABLE_IT(&RC_HUART, UART_IT_IDLE);
@@ -247,15 +246,15 @@ void Angle_Limit(motor_t *Motor)
 
 void Motor_Set_TargetAngle(motor_t* m, float relTargetAngle)
 {
-    // Ä¿±ê¾ø¶Ô½Ç¶È = InitAngle + Ïà¶Ô½Ç¶ÈÃüÁî
+    // ç›®æ ‡ç»å¯¹è§’åº¦ = InitAngle + ç›¸å¯¹è§’åº¦å‘½ä»¤
     m->TargetAngle = m->InitAngle + relTargetAngle;
 	if (fabsf(relTargetAngle-( m->TargetAngle + m->Targetcirnum*360.0f - m->InitAngle))>=2.0f)
         m->SpeedPID->sum_error = 0;
-    // ±£ÁôÔ­À´Âß¼­£º¶Ô½Ç¶È×öÏŞ·ù / ¶ÈÊı¹éÒ»»¯ / ¸üĞÂ Targetcirnum / TargetMechAngle µÈ
+    // ä¿ç•™åŸæ¥é€»è¾‘ï¼šå¯¹è§’åº¦åšé™å¹… / åº¦æ•°å½’ä¸€åŒ– / æ›´æ–° Targetcirnum / TargetMechAngle ç­‰
     Angle_Limit(m);
 }
 
-// ÔöÁ¿Ê½£ºÔÚµ±Ç°Ä¿±ê½Ç¶È»ù´¡ÉÏÔö¼Ó AddAngle£¨¿¼ÂÇ¶àÈ¦£©
+// å¢é‡å¼ï¼šåœ¨å½“å‰ç›®æ ‡è§’åº¦åŸºç¡€ä¸Šå¢åŠ  AddAngleï¼ˆè€ƒè™‘å¤šåœˆï¼‰
 void Motor_Add_TargetAngle(motor_t* m, float AddAngle)
 {
     float total_target = m->TargetAngle + m->Targetcirnum * 360.0f;
@@ -266,14 +265,14 @@ void Motor_Add_TargetAngle(motor_t* m, float AddAngle)
 }
 
 
-//ÀÁµÃÔÙ¿ªÒ»¸ö£¬Ö±½Ó¿ªÒ»¸öÉèÖÃµç»úÄ¿±êÖµ
+//æ‡’å¾—å†å¼€ä¸€ä¸ªï¼Œç›´æ¥å¼€ä¸€ä¸ªè®¾ç½®ç”µæœºç›®æ ‡å€¼
 
 void Motor_Update_Target_FromCycle(motor_t *m, float angle_cycle)
 {
     if (m == NULL)
         return;
 
-    // 1. µÚÒ»´ÎÊ¹ÓÃÊ±£¬ÓÃµ±Ç°Êµ¼Ê½Ç¶È×÷Îª³õÊ¼Ä¿±ê£¬·ÀÖ¹Ò»ÉÏÀ´ÂÒÌø
+    // 1. ç¬¬ä¸€æ¬¡ä½¿ç”¨æ—¶ï¼Œç”¨å½“å‰å®é™…è§’åº¦ä½œä¸ºåˆå§‹ç›®æ ‡ï¼Œé˜²æ­¢ä¸€ä¸Šæ¥ä¹±è·³
     if (m->First_Frame == 0)
     {
         float total_real = m->RealAngle + m->Realcirnum * 360.0f;
@@ -290,64 +289,26 @@ void Motor_Update_Target_FromCycle(motor_t *m, float angle_cycle)
         m->First_Frame  = 1;
     }
 
-    // 2. ÉÏÒ»´ÎµÄ¡°×ÜÄ¿±ê½Ç¶È£¨º¬¶àÈ¦£©¡±
+    // 2. ä¸Šä¸€æ¬¡çš„â€œæ€»ç›®æ ‡è§’åº¦ï¼ˆå«å¤šåœˆï¼‰â€
     float prev_total = m->TargetAngle + m->Targetcirnum * 360.0f;
 
-    // 3. Ñ¡ÔñÒ»¸öÕûÊı k£¬Ê¹µÃ angle_cycle + 360*k ×î½Ó½ü prev_total
-    //    ÕâÑù¾Í¿ÉÒÔÊµÏÖ¶àÈ¦Õ¹¿ª¡¢²»Í»È»´Ó 720¡ã Ìø»Ø 0¡ã
-    float   kf      = (prev_total - angle_cycle) / 360.0f;
-    int32_t k       = (int32_t)roundf(kf);
-    float   new_total = angle_cycle + 360.0f * (float)k;
-
-    // 4. °Ñ new_total ²ğ³É£ºÈ¦Êı + µ±Ç°È¦ÄÚ½Ç¶È
-    int32_t new_cir   = (int32_t)floorf(new_total / 360.0f);
-    float   new_cycle = new_total - (float)new_cir * 360.0f;
-    if (new_cycle < 0.0f)
-    {
-        new_cycle += 360.0f;
-        new_cir -= 1;
-    }
-
-    m->Targetcirnum = (int16_t)new_cir;
-    m->TargetAngle  = new_cycle;
-		update_angle_succeed++;
-    // Èç¹ûÄãÔ­À´ÓĞ½Ç¶ÈÏŞ·ùÂß¼­£¬¿ÉÒÔÔÚÕâÀïµ÷ÓÃ
-     Angle_Limit(m);
-}
-
-
-
-/*
-void Update_motor()
-{
-	
-	if (Remote_controler.offline_check == 1    )
-    {
-        // Ò£¿ØÊ§Áª/ÖØÖÃ£º°ÑÄ¿±êËøÔÚµ±Ç°Î»ÖÃ£¨Ïà¶Ô°²È«£©
-        DJIdown.TargetAngle  = DJIdown.RealAngle;
-        DJIdown.Targetcirnum = DJIdown.Realcirnum;
-
-        LKmid.TargetAngle    = LKmid.RealAngle;
-        LKmid.Targetcirnum   = LKmid.Realcirnum;
-
-        DJIup.TargetAngle    = DJIup.RealAngle;
         DJIup.Targetcirnum   = DJIup.Realcirnum;
         return;
     }
 
-    // 2. ¶ÁÈ¡¹éÒ»»¯µÄÒ¡¸ËÖµ£¨Get_Channel_Value ·µ»ØÔ¼ -1.0 ~ +1.0£©
-    //float ch_down = Get_Channel_Value(CH_LeftVert);   // ×óÒ¡¸ËÉÏÏÂ -> DJIdown
+    // 2. è¯»å–å½’ä¸€åŒ–çš„æ‘‡æ†å€¼ï¼ˆGet_Channel_Value è¿”å›çº¦ -1.0 ~ +1.0ï¼‰
+    //float ch_down = Get_Channel_Value(CH_LeftVert);   // å·¦æ‘‡æ†ä¸Šä¸‹ -> DJIdown
 		ch_down = Get_Channel_Value(CH_LeftVert); 
-    float ch_mid  = Get_Channel_Value(CH_LeftHori);   // ×óÒ¡¸Ë×óÓÒ -> LKmid
-    float ch_up   = Get_Channel_Value(CH_RightVert);  // ÓÒÒ¡¸ËÉÏÏÂ -> DJIup
+    float ch_mid  = Get_Channel_Value(CH_LeftHori);   // å·¦æ‘‡æ†å·¦å³ -> LKmid
+    float ch_up   = Get_Channel_Value(CH_RightVert);  // å³æ‘‡æ†ä¸Šä¸‹ -> DJIup
 
-    // 3. Ó³Éäµ½ 0 ~ 360¡ã Ö®¼ä
-    //    -1 ¶ÔÓ¦ 0¡ã£¬0 ¶ÔÓ¦ 180¡ã£¬+1 ¶ÔÓ¦ 360¡ã
+    // 3. æ˜ å°„åˆ° 0 ~ 360Â° ä¹‹é—´
+    //    -1 å¯¹åº” 0Â°ï¼Œ0 å¯¹åº” 180Â°ï¼Œ+1 å¯¹åº” 360Â°
     float down_cycle = (ch_down + 1.0f) * 180.0f;   // 0 ~ 360
     float mid_cycle  = (ch_mid  + 1.0f) * 180.0f;   // 0 ~ 360
     float up_cycle   = (ch_up   + 1.0f) * 180.0f;   // 0 ~ 360
 
-    // 4. ¸üĞÂÈı¸öµç»úµÄ TargetAngle / Targetcirnum£¨´¦Àí¶àÈ¦£©
+    // 4. æ›´æ–°ä¸‰ä¸ªç”µæœºçš„ TargetAngle / Targetcirnumï¼ˆå¤„ç†å¤šåœˆï¼‰
     Motor_Update_Target_FromCycle(&DJIdown, down_cycle);
 		update_angle_succeed_getfunc++;
     Motor_Update_Target_FromCycle(&LKmid,   mid_cycle);
