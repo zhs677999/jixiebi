@@ -326,11 +326,14 @@ void Can1Received_infoHandle(uint32_t stdid, uint8_t adata[])
     uint32_t id = stdid;
     switch (id)
     {
-    case (GM6020_FEEDBACK_ID + 3):
+    case (GM6020_FEEDBACK_ID + 1):
         DJIMotor_ParaHandle(&YawB, adata);
         break;
-    case (0x140 + 2):
+    case (0x140 + 1):
         LK_Motor_ParaHandle(&PitchMid, adata);
+        break;
+    case (0x140 + 2):
+        LK_Motor_ParaHandle(&LKmid, adata);
         break;
     default:
         break;
